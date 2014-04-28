@@ -3,20 +3,20 @@ require 'spec_helper'
 describe "teams/index" do
   before(:each) do
     assign(:teams, [
-      stub_model(Team,
-        :name => "Name",
-        :short => "Short",
-        :stadium => 1,
-        :national => false,
-        :rating => 2
-      ),
-      stub_model(Team,
-        :name => "Name",
-        :short => "Short",
-        :stadium => 1,
-        :national => false,
-        :rating => 2
-      )
+        stub_model(Team,
+                   :name => "Name",
+                   :short => "Short",
+                   :stadium => 1,
+                   :national => false,
+                   :rating => 2
+        ),
+        stub_model(Team,
+                   :name => "Name",
+                   :short => "Short",
+                   :stadium => 1,
+                   :national => false,
+                   :rating => 2
+        )
     ])
   end
 

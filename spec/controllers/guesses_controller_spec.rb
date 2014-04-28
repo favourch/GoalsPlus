@@ -23,7 +23,7 @@ describe GuessesController do
   # This should return the minimal set of attributes required to create a valid
   # Guess. As you add validations to Guess, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "user" => "1" } }
+  let(:valid_attributes) { {"user" => "1"} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe GuessesController do
       it "assigns a newly created but unsaved guess as @guess" do
         # Trigger the behavior that occurs when invalid params are submitted
         Guess.any_instance.stub(:save).and_return(false)
-        post :create, {:guess => { "user" => "invalid value" }}, valid_session
+        post :create, {:guess => {"user" => "invalid value"}}, valid_session
         assigns(:guess).should be_a_new(Guess)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Guess.any_instance.stub(:save).and_return(false)
-        post :create, {:guess => { "user" => "invalid value" }}, valid_session
+        post :create, {:guess => {"user" => "invalid value"}}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe GuessesController do
         # specifies that the Guess created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Guess.any_instance.should_receive(:update).with({ "user" => "1" })
-        put :update, {:id => guess.to_param, :guess => { "user" => "1" }}, valid_session
+        Guess.any_instance.should_receive(:update).with({"user" => "1"})
+        put :update, {:id => guess.to_param, :guess => {"user" => "1"}}, valid_session
       end
 
       it "assigns the requested guess as @guess" do
@@ -128,7 +128,7 @@ describe GuessesController do
         guess = Guess.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Guess.any_instance.stub(:save).and_return(false)
-        put :update, {:id => guess.to_param, :guess => { "user" => "invalid value" }}, valid_session
+        put :update, {:id => guess.to_param, :guess => {"user" => "invalid value"}}, valid_session
         assigns(:guess).should eq(guess)
       end
 
@@ -136,7 +136,7 @@ describe GuessesController do
         guess = Guess.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Guess.any_instance.stub(:save).and_return(false)
-        put :update, {:id => guess.to_param, :guess => { "user" => "invalid value" }}, valid_session
+        put :update, {:id => guess.to_param, :guess => {"user" => "invalid value"}}, valid_session
         response.should render_template("edit")
       end
     end

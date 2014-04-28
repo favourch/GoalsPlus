@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "stadia/edit" do
   before(:each) do
     @stadium = assign(:stadium, stub_model(Stadium,
-      :name => "MyString",
-      :city => 1,
-      :capacity => 1
+                                           :name => "MyString",
+                                           :city => 1,
+                                           :capacity => 1
     ))
   end
 

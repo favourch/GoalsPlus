@@ -3,13 +3,13 @@ require 'spec_helper'
 describe "guesses/new" do
   before(:each) do
     assign(:guess, stub_model(Guess,
-      :user => 1,
-      :match => 1,
-      :goals_a => 1,
-      :goals_b => 1,
-      :pens_a => 1,
-      :pens_b => 1,
-      :points => 1
+                              :user => 1,
+                              :match => 1,
+                              :goals_a => 1,
+                              :goals_b => 1,
+                              :pens_a => 1,
+                              :pens_b => 1,
+                              :points => 1
     ).as_new_record)
   end
 

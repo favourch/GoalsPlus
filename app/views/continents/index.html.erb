@@ -2,27 +2,27 @@
 
 <table>
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Federation</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Code</th>
+    <th>Federation</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @continents.each do |continent| %>
+  <% @continents.each do |continent| %>
       <tr>
         <td><%= continent.name %></td>
         <td><%= continent.code %></td>
         <td><%= continent.federation %></td>
         <td><%= link_to 'Show', continent %></td>
         <td><%= link_to 'Edit', edit_continent_path(continent) %></td>
-        <td><%= link_to 'Destroy', continent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', continent, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

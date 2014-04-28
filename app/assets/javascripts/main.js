@@ -2,35 +2,35 @@
  * Created by pavel on 4/17/14.
  */
 
-$(function(){
+$(function () {
 
-    $('.info_label').on('click', function(){
+    $('.info_label').on('click', function () {
         $(this).siblings('.match_data').slideToggle();
         $(this).children('.arrow').toggleClass('up down');
     });
 
     // Showing
-    $('.guess.btn').on('click', function(){
+    $('.guess.btn').on('click', function () {
         var $this, match_id, pens, url;
 
-        $this    = $(this);
+        $this = $(this);
         match_id = $this.data('match');
-        pens     = $this.data('pens');
-        url      = 'guesses/new/' + match_id + '/' + pens
+        pens = $this.data('pens');
+        url = 'guesses/new/' + match_id + '/' + pens
 
-        $('.my_guess').load(url, function(){
+        $('.my_guess').load(url, function () {
             $(this).fadeToggle();
         });
     });
 
 
-    $('.other.btn').on('click', function(){
+    $('.other.btn').on('click', function () {
         $('.user_guesses').fadeToggle();
     });
 
     //$('.button').on('click', clickFunction);
 
-    $('.button.edit').click(function(){
+    $('.button.edit').click(function () {
         alert();
     });
 
@@ -40,22 +40,22 @@ $(function(){
 function clickFunction() {
 
     var matchId, userId, guessId,
-        $this    = $(this),
-        pens     = false,
-        $form    = $this.parent('form'),
+        $this = $(this),
+        pens = false,
+        $form = $this.parent('form'),
 
         $myGuess = $form.parent('.my_guess'),
-        data     = $form.serialize(),
-        url      = $form.attr('action');
+        data = $form.serialize(),
+        url = $form.attr('action');
 
-        if ($form.children('#guess_pens_a').val() !== undefined)
-            pens = 'true';
+    if ($form.children('#guess_pens_a').val() !== undefined)
+        pens = 'true';
 
-    $.post(url, data, function(){
+    $.post(url, data, function () {
 
         //console.log('Request has been sent.');
 
-    }).done(function(res) {
+    }).done(function (res) {
 
 
         // New
@@ -67,28 +67,27 @@ function clickFunction() {
         // <div class="button edit" onclick="clickFunction()">Edit</div>
 
         matchId = res.match.id;
-        userId  = res.user.id;
+        userId = res.user.id;
         guessId = res.id;
 
-        $form.parent('.my_guess').slideUp(function(){
+        $form.parent('.my_guess').slideUp(function () {
             var $scopeThis = $(this);
             $form.attr('action', '/guesses/' + matchId);
             $this.removeClass('new').addClass('edit').text('Edit');
-            $('.match[data-match="' + matchId +'"]').find('.match_msg').removeClass('error maroon').addClass('ok').html('Your score has been submitted.');
+            $('.match[data-match="' + matchId + '"]').find('.match_msg').removeClass('error maroon').addClass('ok').html('Your score has been submitted.');
             $scopeThis.children('h3').text('Edit your scores');
             $scopeThis.slideDown();
         });
 
 
-
-    }).fail(function() {
+    }).fail(function () {
 
         //console.log('Request Failed ');
         $myGuess.parent('.match_info').siblings('.match_msg').addClass('error').html('There\'s been an error.');
         //console.log($myGuess);
 
 
-    }).always(function() {
+    }).always(function () {
 
         //console.log('Finishing');
 

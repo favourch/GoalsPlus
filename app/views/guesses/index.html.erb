@@ -2,22 +2,22 @@
 
 <table>
   <thead>
-    <tr>
-      <th>User</th>
-      <th>Match</th>
-      <th>Goals a</th>
-      <th>Goals b</th>
-      <th>Pens a</th>
-      <th>Pens b</th>
-      <th>Points</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>User</th>
+    <th>Match</th>
+    <th>Goals a</th>
+    <th>Goals b</th>
+    <th>Pens a</th>
+    <th>Pens b</th>
+    <th>Points</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @guesses.each do |guess| %>
+  <% @guesses.each do |guess| %>
       <tr>
         <td><%= guess.user.user_name %></td>
         <td><%= guess.match.id %></td>
@@ -28,9 +28,9 @@
         <td><%= guess.points %></td>
         <td><%= link_to 'Show', guess %></td>
         <td><%= link_to 'Edit', edit_guess_path(guess) %></td>
-        <td><%= link_to 'Destroy', guess, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', guess, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

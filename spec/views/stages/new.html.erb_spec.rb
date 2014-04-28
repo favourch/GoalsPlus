@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "stages/new" do
   before(:each) do
     assign(:stage, stub_model(Stage,
-      :name => "MyString"
+                              :name => "MyString"
     ).as_new_record)
   end
 

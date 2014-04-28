@@ -23,7 +23,7 @@ describe ContinentsController do
   # This should return the minimal set of attributes required to create a valid
   # Continent. As you add validations to Continent, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { {"name" => "MyString"} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe ContinentsController do
       it "assigns a newly created but unsaved continent as @continent" do
         # Trigger the behavior that occurs when invalid params are submitted
         Continent.any_instance.stub(:save).and_return(false)
-        post :create, {:continent => { "name" => "invalid value" }}, valid_session
+        post :create, {:continent => {"name" => "invalid value"}}, valid_session
         assigns(:continent).should be_a_new(Continent)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Continent.any_instance.stub(:save).and_return(false)
-        post :create, {:continent => { "name" => "invalid value" }}, valid_session
+        post :create, {:continent => {"name" => "invalid value"}}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe ContinentsController do
         # specifies that the Continent created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Continent.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => continent.to_param, :continent => { "name" => "MyString" }}, valid_session
+        Continent.any_instance.should_receive(:update).with({"name" => "MyString"})
+        put :update, {:id => continent.to_param, :continent => {"name" => "MyString"}}, valid_session
       end
 
       it "assigns the requested continent as @continent" do
@@ -128,7 +128,7 @@ describe ContinentsController do
         continent = Continent.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Continent.any_instance.stub(:save).and_return(false)
-        put :update, {:id => continent.to_param, :continent => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => continent.to_param, :continent => {"name" => "invalid value"}}, valid_session
         assigns(:continent).should eq(continent)
       end
 
@@ -136,7 +136,7 @@ describe ContinentsController do
         continent = Continent.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Continent.any_instance.stub(:save).and_return(false)
-        put :update, {:id => continent.to_param, :continent => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => continent.to_param, :continent => {"name" => "invalid value"}}, valid_session
         response.should render_template("edit")
       end
     end

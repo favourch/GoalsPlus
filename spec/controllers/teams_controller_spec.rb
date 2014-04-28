@@ -23,7 +23,7 @@ describe TeamsController do
   # This should return the minimal set of attributes required to create a valid
   # Team. As you add validations to Team, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { {"name" => "MyString"} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe TeamsController do
       it "assigns a newly created but unsaved team as @team" do
         # Trigger the behavior that occurs when invalid params are submitted
         Team.any_instance.stub(:save).and_return(false)
-        post :create, {:team => { "name" => "invalid value" }}, valid_session
+        post :create, {:team => {"name" => "invalid value"}}, valid_session
         assigns(:team).should be_a_new(Team)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Team.any_instance.stub(:save).and_return(false)
-        post :create, {:team => { "name" => "invalid value" }}, valid_session
+        post :create, {:team => {"name" => "invalid value"}}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe TeamsController do
         # specifies that the Team created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Team.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => team.to_param, :team => { "name" => "MyString" }}, valid_session
+        Team.any_instance.should_receive(:update).with({"name" => "MyString"})
+        put :update, {:id => team.to_param, :team => {"name" => "MyString"}}, valid_session
       end
 
       it "assigns the requested team as @team" do
@@ -128,7 +128,7 @@ describe TeamsController do
         team = Team.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Team.any_instance.stub(:save).and_return(false)
-        put :update, {:id => team.to_param, :team => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => team.to_param, :team => {"name" => "invalid value"}}, valid_session
         assigns(:team).should eq(team)
       end
 
@@ -136,7 +136,7 @@ describe TeamsController do
         team = Team.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Team.any_instance.stub(:save).and_return(false)
-        put :update, {:id => team.to_param, :team => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => team.to_param, :team => {"name" => "invalid value"}}, valid_session
         response.should render_template("edit")
       end
     end

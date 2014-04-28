@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "stadia/new" do
   before(:each) do
     assign(:stadium, stub_model(Stadium,
-      :name => "MyString",
-      :city => 1,
-      :capacity => 1
+                                :name => "MyString",
+                                :city => 1,
+                                :capacity => 1
     ).as_new_record)
   end
 

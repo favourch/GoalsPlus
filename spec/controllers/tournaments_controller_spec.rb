@@ -23,7 +23,7 @@ describe TournamentsController do
   # This should return the minimal set of attributes required to create a valid
   # Tournament. As you add validations to Tournament, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { {"name" => "MyString"} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe TournamentsController do
       it "assigns a newly created but unsaved tournament as @tournament" do
         # Trigger the behavior that occurs when invalid params are submitted
         Tournament.any_instance.stub(:save).and_return(false)
-        post :create, {:tournament => { "name" => "invalid value" }}, valid_session
+        post :create, {:tournament => {"name" => "invalid value"}}, valid_session
         assigns(:tournament).should be_a_new(Tournament)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Tournament.any_instance.stub(:save).and_return(false)
-        post :create, {:tournament => { "name" => "invalid value" }}, valid_session
+        post :create, {:tournament => {"name" => "invalid value"}}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe TournamentsController do
         # specifies that the Tournament created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Tournament.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => tournament.to_param, :tournament => { "name" => "MyString" }}, valid_session
+        Tournament.any_instance.should_receive(:update).with({"name" => "MyString"})
+        put :update, {:id => tournament.to_param, :tournament => {"name" => "MyString"}}, valid_session
       end
 
       it "assigns the requested tournament as @tournament" do
@@ -128,7 +128,7 @@ describe TournamentsController do
         tournament = Tournament.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Tournament.any_instance.stub(:save).and_return(false)
-        put :update, {:id => tournament.to_param, :tournament => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => tournament.to_param, :tournament => {"name" => "invalid value"}}, valid_session
         assigns(:tournament).should eq(tournament)
       end
 
@@ -136,7 +136,7 @@ describe TournamentsController do
         tournament = Tournament.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Tournament.any_instance.stub(:save).and_return(false)
-        put :update, {:id => tournament.to_param, :tournament => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => tournament.to_param, :tournament => {"name" => "invalid value"}}, valid_session
         response.should render_template("edit")
       end
     end

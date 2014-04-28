@@ -1,38 +1,40 @@
 <h3>Edit your score</h3>
 
 <%
-   guess    = @guess if @guess
+   guess = @guess if @guess
    match_id = @match_id if @match_id
-   pens     = @pens if @pens
+   pens = @pens if @pens
 
 %>
 
 
-<%= form_for (guess), html: {role: 'form', class: "guess_form form-inline", id: "guess_match_" + match_id.to_s, name: 'match_' + match_id.to_s } do |f| %>
-  <% if guess.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(guess.errors.count, "error") %> prohibited this guess from being saved:</h2>
+<%= form_for (guess), html: {role: 'form', class: "guess_form form-inline", id: "guess_match_" + match_id.to_s, name: 'match_' + match_id.to_s} do |f| %>
+    <% if guess.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(guess.errors.count, "error") %> prohibited this guess from being saved:</h2>
 
-      <ul>
-      <% guess.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+          <ul>
+            <% guess.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
 
 
 
     <div class="form-group goals">
-      <%= f.number_field :goals_a, class: 'form-control input-lg goals' %> : <%= f.number_field :goals_b, class: 'form-control input-lg goals' %>
+      <%= f.number_field :goals_a, class: 'form-control input-lg goals' %>
+      : <%= f.number_field :goals_b, class: 'form-control input-lg goals' %>
     </div>
 
     <% if pens %>
-      <div class="form-group pens">
-        (<%= f.number_field :pens_a, class: 'form-control input-lg goals' %> : <%= f.number_field :pens_b, class: 'form-control input-lg goals' %> pens.)
-      </div>
-    <%end%>
+        <div class="form-group pens">
+          (<%= f.number_field :pens_a, class: 'form-control input-lg goals' %>
+          : <%= f.number_field :pens_b, class: 'form-control input-lg goals' %> pens.)
+        </div>
+    <% end %>
     <div class="form-group submit">
       <button class="edit btn btn-primary btn-large">Edit</button>
     </div>

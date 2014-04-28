@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "continents/edit" do
   before(:each) do
     @continent = assign(:continent, stub_model(Continent,
-      :name => "MyString",
-      :code => "MyString",
-      :federation => "MyString"
+                                               :name => "MyString",
+                                               :code => "MyString",
+                                               :federation => "MyString"
     ))
   end
 

@@ -23,7 +23,7 @@ describe StagesController do
   # This should return the minimal set of attributes required to create a valid
   # Stage. As you add validations to Stage, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { {"name" => "MyString"} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe StagesController do
       it "assigns a newly created but unsaved stage as @stage" do
         # Trigger the behavior that occurs when invalid params are submitted
         Stage.any_instance.stub(:save).and_return(false)
-        post :create, {:stage => { "name" => "invalid value" }}, valid_session
+        post :create, {:stage => {"name" => "invalid value"}}, valid_session
         assigns(:stage).should be_a_new(Stage)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Stage.any_instance.stub(:save).and_return(false)
-        post :create, {:stage => { "name" => "invalid value" }}, valid_session
+        post :create, {:stage => {"name" => "invalid value"}}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe StagesController do
         # specifies that the Stage created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Stage.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => stage.to_param, :stage => { "name" => "MyString" }}, valid_session
+        Stage.any_instance.should_receive(:update).with({"name" => "MyString"})
+        put :update, {:id => stage.to_param, :stage => {"name" => "MyString"}}, valid_session
       end
 
       it "assigns the requested stage as @stage" do
@@ -128,7 +128,7 @@ describe StagesController do
         stage = Stage.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Stage.any_instance.stub(:save).and_return(false)
-        put :update, {:id => stage.to_param, :stage => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => stage.to_param, :stage => {"name" => "invalid value"}}, valid_session
         assigns(:stage).should eq(stage)
       end
 
@@ -136,7 +136,7 @@ describe StagesController do
         stage = Stage.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Stage.any_instance.stub(:save).and_return(false)
-        put :update, {:id => stage.to_param, :stage => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => stage.to_param, :stage => {"name" => "invalid value"}}, valid_session
         response.should render_template("edit")
       end
     end

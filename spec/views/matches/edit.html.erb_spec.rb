@@ -3,20 +3,20 @@ require 'spec_helper'
 describe "matches/edit" do
   before(:each) do
     @match = assign(:match, stub_model(Match,
-      :team_a => 1,
-      :team_b => 1,
-      :stadium => 1,
-      :tournament => 1,
-      :stage => 1,
-      :timezone => 1,
-      :pens => false,
-      :goals_a => 1,
-      :goals_b => 1,
-      :pens_a => 1,
-      :pens_b => 1,
-      :coof_a => "9.99",
-      :coof_x => "9.99",
-      :coof_b => "9.99"
+                                       :team_a => 1,
+                                       :team_b => 1,
+                                       :stadium => 1,
+                                       :tournament => 1,
+                                       :stage => 1,
+                                       :timezone => 1,
+                                       :pens => false,
+                                       :goals_a => 1,
+                                       :goals_b => 1,
+                                       :pens_a => 1,
+                                       :pens_b => 1,
+                                       :coof_a => "9.99",
+                                       :coof_x => "9.99",
+                                       :coof_b => "9.99"
     ))
   end
 

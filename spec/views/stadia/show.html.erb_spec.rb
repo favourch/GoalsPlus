@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "stadia/show" do
   before(:each) do
     @stadium = assign(:stadium, stub_model(Stadium,
-      :name => "Name",
-      :city => 1,
-      :capacity => 2
+                                           :name => "Name",
+                                           :city => 1,
+                                           :capacity => 2
     ))
   end
 

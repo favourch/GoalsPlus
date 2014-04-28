@@ -3,16 +3,16 @@ require 'spec_helper'
 describe "countries/index" do
   before(:each) do
     assign(:countries, [
-      stub_model(Country,
-        :name => "Name",
-        :code => "Code",
-        :continent => 1
-      ),
-      stub_model(Country,
-        :name => "Name",
-        :code => "Code",
-        :continent => 1
-      )
+        stub_model(Country,
+                   :name => "Name",
+                   :code => "Code",
+                   :continent => 1
+        ),
+        stub_model(Country,
+                   :name => "Name",
+                   :code => "Code",
+                   :continent => 1
+        )
     ])
   end
 

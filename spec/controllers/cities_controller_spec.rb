@@ -23,7 +23,7 @@ describe CitiesController do
   # This should return the minimal set of attributes required to create a valid
   # City. As you add validations to City, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "name" => "MyString" } }
+  let(:valid_attributes) { {"name" => "MyString"} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe CitiesController do
       it "assigns a newly created but unsaved city as @city" do
         # Trigger the behavior that occurs when invalid params are submitted
         City.any_instance.stub(:save).and_return(false)
-        post :create, {:city => { "name" => "invalid value" }}, valid_session
+        post :create, {:city => {"name" => "invalid value"}}, valid_session
         assigns(:city).should be_a_new(City)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         City.any_instance.stub(:save).and_return(false)
-        post :create, {:city => { "name" => "invalid value" }}, valid_session
+        post :create, {:city => {"name" => "invalid value"}}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe CitiesController do
         # specifies that the City created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        City.any_instance.should_receive(:update).with({ "name" => "MyString" })
-        put :update, {:id => city.to_param, :city => { "name" => "MyString" }}, valid_session
+        City.any_instance.should_receive(:update).with({"name" => "MyString"})
+        put :update, {:id => city.to_param, :city => {"name" => "MyString"}}, valid_session
       end
 
       it "assigns the requested city as @city" do
@@ -128,7 +128,7 @@ describe CitiesController do
         city = City.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         City.any_instance.stub(:save).and_return(false)
-        put :update, {:id => city.to_param, :city => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => city.to_param, :city => {"name" => "invalid value"}}, valid_session
         assigns(:city).should eq(city)
       end
 
@@ -136,7 +136,7 @@ describe CitiesController do
         city = City.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         City.any_instance.stub(:save).and_return(false)
-        put :update, {:id => city.to_param, :city => { "name" => "invalid value" }}, valid_session
+        put :update, {:id => city.to_param, :city => {"name" => "invalid value"}}, valid_session
         response.should render_template("edit")
       end
     end

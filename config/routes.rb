@@ -42,11 +42,9 @@ Soccer::Application.routes.draw do
   #edit_setting_path	 GET	 /settings/:id/edit(.:format)	 settings#edi
 
 
-
-
   root 'matches#index'
 
- # match 'matches/index', to: 'matches/index?page=3', via: get
+  # match 'matches/index', to: 'matches/index?page=3', via: get
 
   #match '/', to: 'matches/index', via: get
   #get "soccer/index"

@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "countries/show" do
   before(:each) do
     @country = assign(:country, stub_model(Country,
-      :name => "Name",
-      :code => "Code",
-      :continent => 1
+                                           :name => "Name",
+                                           :code => "Code",
+                                           :continent => 1
     ))
   end
 

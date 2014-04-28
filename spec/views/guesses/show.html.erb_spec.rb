@@ -3,13 +3,13 @@ require 'spec_helper'
 describe "guesses/show" do
   before(:each) do
     @guess = assign(:guess, stub_model(Guess,
-      :user => 1,
-      :match => 2,
-      :goals_a => 3,
-      :goals_b => 4,
-      :pens_a => 5,
-      :pens_b => 6,
-      :points => 7
+                                       :user => 1,
+                                       :match => 2,
+                                       :goals_a => 3,
+                                       :goals_b => 4,
+                                       :pens_a => 5,
+                                       :pens_b => 6,
+                                       :points => 7
     ))
   end
 

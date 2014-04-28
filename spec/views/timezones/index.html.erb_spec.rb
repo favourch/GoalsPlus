@@ -3,16 +3,16 @@ require 'spec_helper'
 describe "timezones/index" do
   before(:each) do
     assign(:timezones, [
-      stub_model(Timezone,
-        :name => "Name",
-        :tzinfo => "Tzinfo",
-        :utc => "Utc"
-      ),
-      stub_model(Timezone,
-        :name => "Name",
-        :tzinfo => "Tzinfo",
-        :utc => "Utc"
-      )
+        stub_model(Timezone,
+                   :name => "Name",
+                   :tzinfo => "Tzinfo",
+                   :utc => "Utc"
+        ),
+        stub_model(Timezone,
+                   :name => "Name",
+                   :tzinfo => "Tzinfo",
+                   :utc => "Utc"
+        )
     ])
   end
 

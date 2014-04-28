@@ -3,11 +3,11 @@ class CreateGuesses < ActiveRecord::Migration
     create_table :guesses do |t|
       t.references :user
       t.references :match
-      t.integer    :goals_a, :null => false
-      t.integer    :goals_b, :null => false
-      t.integer    :pens_a
-      t.integer    :pens_b
-      t.integer    :points
+      t.integer :goals_a, :null => false
+      t.integer :goals_b, :null => false
+      t.integer :pens_a
+      t.integer :pens_b
+      t.integer :points
 
       t.timestamps
     end

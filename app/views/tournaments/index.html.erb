@@ -2,20 +2,20 @@
 
 <table>
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Short</th>
-      <th>National</th>
-      <th>Club</th>
-      <th>Rating</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Short</th>
+    <th>National</th>
+    <th>Club</th>
+    <th>Rating</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @tournaments.each do |tournament| %>
+  <% @tournaments.each do |tournament| %>
       <tr>
         <td><%= tournament.name %></td>
         <td><%= tournament.short %></td>
@@ -24,9 +24,9 @@
         <td><%= tournament.rating %></td>
         <td><%= link_to 'Show', tournament %></td>
         <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
-        <td><%= link_to 'Destroy', tournament, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', tournament, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

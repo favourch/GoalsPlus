@@ -5,5 +5,5 @@ class Match < ActiveRecord::Base
   belongs_to :tournament
   belongs_to :stage
   belongs_to :timezone
-  has_many   :guesses
+  has_many :guesses
 end

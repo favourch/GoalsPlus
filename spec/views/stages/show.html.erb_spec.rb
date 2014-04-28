@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "stages/show" do
   before(:each) do
     @stage = assign(:stage, stub_model(Stage,
-      :name => "Name"
+                                       :name => "Name"
     ))
   end
 

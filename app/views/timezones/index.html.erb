@@ -2,27 +2,27 @@
 
 <table>
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Tzinfo</th>
-      <th>Utc</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Tzinfo</th>
+    <th>Utc</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @timezones.each do |timezone| %>
+  <% @timezones.each do |timezone| %>
       <tr>
         <td><%= timezone.name %></td>
         <td><%= timezone.tzinfo %></td>
         <td><%= timezone.utc %></td>
         <td><%= link_to 'Show', timezone %></td>
         <td><%= link_to 'Edit', edit_timezone_path(timezone) %></td>
-        <td><%= link_to 'Destroy', timezone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', timezone, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

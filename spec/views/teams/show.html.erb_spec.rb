@@ -3,11 +3,11 @@ require 'spec_helper'
 describe "teams/show" do
   before(:each) do
     @team = assign(:team, stub_model(Team,
-      :name => "Name",
-      :short => "Short",
-      :stadium => 1,
-      :national => false,
-      :rating => 2
+                                     :name => "Name",
+                                     :short => "Short",
+                                     :stadium => 1,
+                                     :national => false,
+                                     :rating => 2
     ))
   end
 

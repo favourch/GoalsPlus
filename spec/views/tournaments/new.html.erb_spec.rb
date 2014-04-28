@@ -3,11 +3,11 @@ require 'spec_helper'
 describe "tournaments/new" do
   before(:each) do
     assign(:tournament, stub_model(Tournament,
-      :name => "MyString",
-      :short => "MyString",
-      :national => false,
-      :club => false,
-      :rating => 1
+                                   :name => "MyString",
+                                   :short => "MyString",
+                                   :national => false,
+                                   :club => false,
+                                   :rating => 1
     ).as_new_record)
   end
 

@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "timezones/show" do
   before(:each) do
     @timezone = assign(:timezone, stub_model(Timezone,
-      :name => "Name",
-      :tzinfo => "Tzinfo",
-      :utc => "Utc"
+                                             :name => "Name",
+                                             :tzinfo => "Tzinfo",
+                                             :utc => "Utc"
     ))
   end
 

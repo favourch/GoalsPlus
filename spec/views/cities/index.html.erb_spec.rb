@@ -3,16 +3,16 @@ require 'spec_helper'
 describe "cities/index" do
   before(:each) do
     assign(:cities, [
-      stub_model(City,
-        :name => "Name",
-        :timezone => 1,
-        :country => 2
-      ),
-      stub_model(City,
-        :name => "Name",
-        :timezone => 1,
-        :country => 2
-      )
+        stub_model(City,
+                   :name => "Name",
+                   :timezone => 1,
+                   :country => 2
+        ),
+        stub_model(City,
+                   :name => "Name",
+                   :timezone => 1,
+                   :country => 2
+        )
     ])
   end
 

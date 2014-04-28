@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "cities/show" do
   before(:each) do
     @city = assign(:city, stub_model(City,
-      :name => "Name",
-      :timezone => 1,
-      :country => 2
+                                     :name => "Name",
+                                     :timezone => 1,
+                                     :country => 2
     ))
   end
 

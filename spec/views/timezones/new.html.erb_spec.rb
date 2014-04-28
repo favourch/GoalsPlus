@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "timezones/new" do
   before(:each) do
     assign(:timezone, stub_model(Timezone,
-      :name => "MyString",
-      :tzinfo => "MyString",
-      :utc => "MyString"
+                                 :name => "MyString",
+                                 :tzinfo => "MyString",
+                                 :utc => "MyString"
     ).as_new_record)
   end
 

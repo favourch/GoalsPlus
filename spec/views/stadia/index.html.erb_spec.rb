@@ -3,16 +3,16 @@ require 'spec_helper'
 describe "stadia/index" do
   before(:each) do
     assign(:stadia, [
-      stub_model(Stadium,
-        :name => "Name",
-        :city => 1,
-        :capacity => 2
-      ),
-      stub_model(Stadium,
-        :name => "Name",
-        :city => 1,
-        :capacity => 2
-      )
+        stub_model(Stadium,
+                   :name => "Name",
+                   :city => 1,
+                   :capacity => 2
+        ),
+        stub_model(Stadium,
+                   :name => "Name",
+                   :city => 1,
+                   :capacity => 2
+        )
     ])
   end
 

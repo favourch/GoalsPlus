@@ -2,20 +2,20 @@
 
 <table>
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Short</th>
-      <th>Stadium</th>
-      <th>National</th>
-      <th>Rating</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>Name</th>
+    <th>Short</th>
+    <th>Stadium</th>
+    <th>National</th>
+    <th>Rating</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @teams.each do |team| %>
+  <% @teams.each do |team| %>
       <tr>
         <td><%= team.name %></td>
         <td><%= team.short %></td>
@@ -24,9 +24,9 @@
         <td><%= team.rating %></td>
         <td><%= link_to 'Show', team %></td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', team, method: :delete, data: {confirm: 'Are you sure?'} %></td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 

@@ -18,14 +18,14 @@ class GuessesController < ApplicationController
   def new
 
     @match_id = params[:match_id]
-    @pens     = to_bool(params[:pens])
-    @guess    = Guess.new
+    @pens = to_bool(params[:pens])
+    @guess = Guess.new
   end
 
   # GET /guesses/1/edit
   def edit
     @match_id = params[:match_id]
-    @pens     = to_bool(params[:pens])
+    @pens = to_bool(params[:pens])
     @guess_id = params[:id]
 
     puts @pens
@@ -72,20 +72,20 @@ class GuessesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_guess
-      @guess = Guess.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_guess
+    @guess = Guess.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def guess_params
-      params.require(:guess).permit(:user_id, :match_id, :goals_a, :goals_b, :pens_a, :pens_b, :points)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def guess_params
+    params.require(:guess).permit(:user_id, :match_id, :goals_a, :goals_b, :pens_a, :pens_b, :points)
+  end
 
 
   def to_bool(str)
     return true if str == true || str =~ (/^(true|t|yes|y|1)$/i)
     return false if str == false || str.blank? || self =~ (/^(false|f|no|n|0)$/i)
-   end
+  end
 
 end

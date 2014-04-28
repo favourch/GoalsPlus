@@ -3,24 +3,24 @@ require 'spec_helper'
 describe "guesses/index" do
   before(:each) do
     assign(:guesses, [
-      stub_model(Guess,
-        :user => 1,
-        :match => 2,
-        :goals_a => 3,
-        :goals_b => 4,
-        :pens_a => 5,
-        :pens_b => 6,
-        :points => 7
-      ),
-      stub_model(Guess,
-        :user => 1,
-        :match => 2,
-        :goals_a => 3,
-        :goals_b => 4,
-        :pens_a => 5,
-        :pens_b => 6,
-        :points => 7
-      )
+        stub_model(Guess,
+                   :user => 1,
+                   :match => 2,
+                   :goals_a => 3,
+                   :goals_b => 4,
+                   :pens_a => 5,
+                   :pens_b => 6,
+                   :points => 7
+        ),
+        stub_model(Guess,
+                   :user => 1,
+                   :match => 2,
+                   :goals_a => 3,
+                   :goals_b => 4,
+                   :pens_a => 5,
+                   :pens_b => 6,
+                   :points => 7
+        )
     ])
   end
 

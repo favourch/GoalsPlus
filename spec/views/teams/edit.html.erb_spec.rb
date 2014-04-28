@@ -3,11 +3,11 @@ require 'spec_helper'
 describe "teams/edit" do
   before(:each) do
     @team = assign(:team, stub_model(Team,
-      :name => "MyString",
-      :short => "MyString",
-      :stadium => 1,
-      :national => false,
-      :rating => 1
+                                     :name => "MyString",
+                                     :short => "MyString",
+                                     :stadium => 1,
+                                     :national => false,
+                                     :rating => 1
     ))
   end
 

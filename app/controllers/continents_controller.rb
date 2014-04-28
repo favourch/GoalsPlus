@@ -62,13 +62,13 @@ class ContinentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_continent
-      @continent = Continent.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_continent
+    @continent = Continent.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def continent_params
-      params.require(:continent).permit(:name, :code, :federation)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def continent_params
+    params.require(:continent).permit(:name, :code, :federation)
+  end
 end

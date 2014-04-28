@@ -3,12 +3,12 @@ require 'spec_helper'
 describe "stages/index" do
   before(:each) do
     assign(:stages, [
-      stub_model(Stage,
-        :name => "Name"
-      ),
-      stub_model(Stage,
-        :name => "Name"
-      )
+        stub_model(Stage,
+                   :name => "Name"
+        ),
+        stub_model(Stage,
+                   :name => "Name"
+        )
     ])
   end
 

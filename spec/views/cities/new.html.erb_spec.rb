@@ -3,9 +3,9 @@ require 'spec_helper'
 describe "cities/new" do
   before(:each) do
     assign(:city, stub_model(City,
-      :name => "MyString",
-      :timezone => 1,
-      :country => 1
+                             :name => "MyString",
+                             :timezone => 1,
+                             :country => 1
     ).as_new_record)
   end
 

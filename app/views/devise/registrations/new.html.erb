@@ -4,22 +4,26 @@
     <%= devise_error_messages! %>
 
     <div class="form-group">
-      <%= f.label :user_name %><br />
+      <%= f.label :user_name %>
+      <br/>
       <%= f.text_field :user_name, :autofocus => true, placeholder: "Username", class: "form-control input-lg" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, placeholder: "email@example.com", class: "form-control input-lg"  %>
+      <%= f.label :email %>
+      <br/>
+      <%= f.email_field :email, placeholder: "email@example.com", class: "form-control input-lg" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :password %><br />
-      <%= f.password_field :password , placeholder: "Password", class: "form-control input-lg" %>
+      <%= f.label :password %>
+      <br/>
+      <%= f.password_field :password, placeholder: "Password", class: "form-control input-lg" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :password_confirmation %><br />
+      <%= f.label :password_confirmation %>
+      <br/>
       <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control input-lg" %>
     </div>
 
