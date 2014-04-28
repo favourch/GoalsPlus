@@ -1,4 +1,5 @@
 GoalsPlus
-===========
+=========
 
-Soccer scores prediction betting app.
+Web app for soccer scores predictions.
+
