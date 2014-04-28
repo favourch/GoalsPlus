@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tournament.name %>
+</p>
+
+<p>
+  <strong>Short:</strong>
+  <%= @tournament.short %>
+</p>
+
+<p>
+  <strong>National:</strong>
+  <%= @tournament.national %>
+</p>
+
+<p>
+  <strong>Club:</strong>
+  <%= @tournament.club %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @tournament.rating %>
+</p>
+
+<%= link_to 'Edit', edit_tournament_path(@tournament) %> |
+<%= link_to 'Back', tournaments_path %>

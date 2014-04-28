@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @timezone.name %>
+</p>
+
+<p>
+  <strong>Tzinfo:</strong>
+  <%= @timezone.tzinfo %>
+</p>
+
+<p>
+  <strong>Utc:</strong>
+  <%= @timezone.utc %>
+</p>
+
+<%= link_to 'Edit', edit_timezone_path(@timezone) %> |
+<%= link_to 'Back', timezones_path %>

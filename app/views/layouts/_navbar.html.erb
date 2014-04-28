@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-contents">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <!--- div class="imgLogo"></div -->
+    <a href="/" class="navbar-brand logo"><span class="letter">G</span><span class="num">0</span><span class="merge"><span class="num">:</span><span class="letter">a</span></span><span class="num">1</span><span class="letter">s+</span></a>
+  </div>
+  <!-- end navbar-header -->
+  <!-- Nav links and content -->
+  <div class="collapse navbar-collapse" id="navbar-contents">
+    <ul class="nav navbar-nav" role="navigation">
+      <li><a href="#">Matches</a></li>
+      <li><a href="#">Stats</a></li>
+      <li><a href="#">Discussion</a></li>
+      <li><a href="#">About</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Users</a></li>
+          <li><a href="#">Matches</a></li>
+          <li><a href="#">Teams</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Competitions</a></li>
+          <li><a href="#">Stages</a></li>
+          <li><a href="#">Stadiums</a></li>
+          <li><a href="#">Cities</a></li>
+          <li><a href="#">Countries</a></li>
+          <li><a href="#">Cities</a></li>
+        </ul>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <%= render 'devise/menu/registration_items' %>
+      <%= render 'devise/menu/login_items' %>
+    </ul>
+  </div>
+  <!-- end navbar-collapse -->
+</div> <!-- end container -->

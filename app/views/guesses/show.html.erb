@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @guess.user %>
+</p>
+
+<p>
+  <strong>Match:</strong>
+  <%= @guess.match %>
+</p>
+
+<p>
+  <strong>Goals a:</strong>
+  <%= @guess.goals_a %>
+</p>
+
+<p>
+  <strong>Goals b:</strong>
+  <%= @guess.goals_b %>
+</p>
+
+<p>
+  <strong>Pens a:</strong>
+  <%= @guess.pens_a %>
+</p>
+
+<p>
+  <strong>Pens b:</strong>
+  <%= @guess.pens_b %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @guess.points %>
+</p>
+
+<%= link_to 'Edit', edit_guess_path(@guess) %> |
+<%= link_to 'Back', guesses_path %>

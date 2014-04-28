@@ -1,0 +1,23 @@
+<p>Welcome <%= @email %>!</p>
+
+<p>Welcome to <strong>Goals+</strong>, soccer scores predictions web site. Mind that it is a still at beta stage and
+  there maybe some issues.</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>After confirmation you will be granted a guest access, and will be able to browse the website with no additional
+  privileges. To gain user privileges you will have to be approved by an admin, which shouldn't take long.</p>
+
+<p>After first login, please update your settings. This is very important, since most of the material is time
+  sensitive.</p>
+
+<p>-----------------------------------------
+  <br/>
+  Name: <strong>"Goals+"</strong>
+  <br/>
+  Address: <a href="http://goals.soccer.ws">http://goals.soccer.ws</a>
+  <br/>
+  Email: <em>soccer@pavel.ws</em>
+</p>

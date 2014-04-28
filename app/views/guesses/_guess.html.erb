@@ -1,0 +1,39 @@
+<h3>Submit your scores</h3>
+
+
+
+
+
+
+
+
+
+<%= form_for (guess), html: {class: "guess_form form-inline", id: "guess_match_"+match_id.to_s, name: 'match_'+match_id.to_s } do |f| %>
+  <% if guess.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(guess.errors.count, "error") %> prohibited this guess from being saved:</h2>
+
+      <ul>
+      <% guess.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id, value: current_user.id  %>
+  <%= f.hidden_field :match_id, value: match_id %>
+
+  <div class="form-group goals">
+    <%= f.number_field :goals_a, class: 'form-control input-lg goals' %> : <%= f.number_field :goals_b, class: 'form-control input-lg goals' %>
+  </div>
+  <% if pens %>
+    <div class="form-group pens">
+      (<%= f.number_field :pens_a, class: 'form-control input-lg goals' %> : <%= f.number_field :pens_b, class: 'form-control input-lg goals' %> pens.)
+    </div>
+  <%end%>
+
+  <div class="form-group submit">
+    <button class="btn btn-primary btn-large new">Submit</button>
+  </div>
+<% end %>

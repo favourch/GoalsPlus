@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>screen_name:</strong>
+  <%= @setting.screen_name %>
+</p>
+
+<p>
+  <strong>cell_phone:</strong>
+  <%= @setting.cell_phone %>
+</p>
+
+<p>
+  <strong>role:</strong>
+  <%= @setting.role %>
+</p>
+
+<p>
+  <strong>timezone:</strong>
+  <%= @setting.timezone %>
+</p>
+
+<p>
+  <strong>language:</strong>
+  <%= @setting.language %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_setting_path(@setting) %> |
+<%= link_to 'Back', settings_path %>
+

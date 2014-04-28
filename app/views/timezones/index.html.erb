@@ -1,0 +1,31 @@
+<h1>Listing timezones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Tzinfo</th>
+      <th>Utc</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @timezones.each do |timezone| %>
+      <tr>
+        <td><%= timezone.name %></td>
+        <td><%= timezone.tzinfo %></td>
+        <td><%= timezone.utc %></td>
+        <td><%= link_to 'Show', timezone %></td>
+        <td><%= link_to 'Edit', edit_timezone_path(timezone) %></td>
+        <td><%= link_to 'Destroy', timezone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Timezone', new_timezone_path %>

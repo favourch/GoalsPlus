@@ -1,0 +1,66 @@
+<% puts YAML::dump(@match) %>
+
+<%= form_for(@match) do |f| %>
+  <% if @match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% @match.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   Match:    <%= @match.team_a.name %> vs <%= @match.team_b.name %>  <br/>
+   Tournament: <%= @match.tournament.name %>, <%= @match.stage.name %><br/>
+   Location: <%= @match.stadium.name %>, <%= @match.stadium.city.name %> (<%= @match.stadium.city.country.code %>) <br/>
+   Date:     <%= @match.date.to_s(:game) %> (<%= @match.date.strftime("%Z") %> time) <br/>
+   <% if @match.pens %>
+        Game may go into penalties <br/>
+   <% end %>
+
+
+  <div class="oddsHead">Winning odds</div>
+  <div class="odds">
+    <div class="oddsRow">
+      <div class="team"><%= @match.team_a.short %></div>
+      <div class="coefficient"><%= @match.coof_a %></div>
+    </div>
+    <div class="oddsRow">
+      <div class="team">Draw</div>
+      <div class="coefficient"><%= @match.coof_x %></div>
+    </div>
+    <div class="oddsRow">
+      <div class="team"><%= @match.team_b.short %></div>
+      <div class="coefficient"><%= @match.coof_b %></div></div>
+  </div>
+
+
+    <div class="scores">
+      <div class="row head">
+        <div class="col">Team</div>
+        <div class="col">Goals</div>
+        <% if @match.pens %><div class="col">Pens</div><% end %>
+      </div>
+      <div class="row">
+        <div class="col"><%= @match.team_a.short %></div>
+        <div class="col"><%= f.number_field :goals_a, value: @match.goals_a %></div>
+        <% if @match.pens %>
+            <div class="col"><%= f.number_field :pens_a, value: @match.pens_a %></div>
+        <% end %>    </div>
+      <div class="row">
+        <div class="col"><%= @match.team_b.short %></div>
+        <div class="col"><%= f.number_field :goals_b, value: @match.goals_b %></div>
+        <% if @match.pens %>
+            <div class="col"><%= f.number_field :pens_b, value: @match.pens_b %></div>
+        <% end %>
+      </div>
+    </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

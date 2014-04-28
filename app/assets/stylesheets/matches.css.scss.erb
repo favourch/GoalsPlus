@@ -1,0 +1,289 @@
+.match {
+    color: #555;
+    display: table;
+    width: 100%;
+    border: 1px #555555 solid;
+    margin-top: 20px;
+    box-shadow: rgb(168, 168, 168) 0px 3px 5px 4px;
+    border-radius: 5px;
+    background-color: #fff;
+
+}
+
+.match:last-of-type {
+    margin-bottom: 20px;
+}
+
+.match_tab {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+    border-bottom: 1px solid #555;
+    background-color: #999;
+    color: #fff;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px
+}
+
+.match_num, .match_date {
+    display: inline-block;
+}
+
+.match_num {
+    padding-left: 10px;
+    width: 100px
+}
+
+.match_date {
+    padding-right: 10px;
+    width: calc(100% - 110px);
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.match_body {
+    width: 100%;
+    background-color: #fff;
+    padding-bottom: 20px;
+    border-radius: 0 5px 5px;
+
+}
+
+.team_b, .team_a, .vs {
+    text-align: center;
+    display: inline-block;
+    margin: 0;
+}
+
+.team_a, .team_b {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    width: calc(50% - 25px)
+}
+
+.team_name {
+    font-size: 26px;
+    line-height: 26px;
+}
+
+.team_name.short {
+    display: none;
+}
+
+.team_name.long {
+    display: block;
+}
+
+.team_score {
+    margin: 5px auto;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    min-width: 50px;
+    max-width: 60px;
+    height: 50px;
+    background-color: #ddd;
+    border-radius: 30px;
+}
+
+.scores > div {
+    padding: 0 0 10px 0;
+}
+
+.scores > .team_a, .scores > .team_b {
+    width: calc(50% - 40px);
+}
+
+.scores > .vs {
+    width: 70px
+}
+
+.team_score:empty {
+    display: none;
+}
+
+.match_stats {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.match_stats > div {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.match_info {
+    width: calc(100% - 65px);
+    float: left
+}
+
+.match_link {
+    float: right;
+    margin-top: 20px;
+}
+
+tr {
+    display: table-row;
+}
+
+td.user {
+    width: 100px;
+}
+
+.vs {
+    text-align: center;
+    line-height: 18px;
+    font-size: 18px;
+    padding-top: -10px;
+    width: 40px
+}
+
+.info_label {
+    height: 30px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    .arrow {
+        height: 6px;
+        width: 64px;
+        background-color: #e5e5e5;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+    .arrow.up {
+        bottom: -20px;
+    }
+
+    .arrow.down {
+        top: 5px;
+    }
+    .arrow:after, .arrow:before {
+        border-left: 32px solid rgba(229, 229, 229, 0);
+        border-right: 32px solid rgba(229, 229, 229, 0);
+        content: ' ';
+        height: 0;
+        left: 0;
+        position: absolute;
+        width: 0;
+    }
+
+    .arrow.up:before {
+        border-bottom: 16px solid #e5e5e5;
+        bottom: 6px;
+    }
+    .arrow.up:after {
+        border-bottom: 16px solid #fff;
+        bottom: 0;
+    }
+
+    .arrow.down:before {
+        border-top: 16px solid #e5e5e5;
+        top: 6px;
+    }
+
+    .arrow.down:after {
+        border-top: 16px solid #fff;
+        top: 0;
+    }
+
+}
+
+.column > .new {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 46px;
+    font-size: 16px;
+    line-height: 30px;
+
+}
+
+.match_data {
+    padding: 10px;
+    background-color: #e8e8e8;
+    border-bottom: 1px solid gray;
+}
+
+.info-row {
+    color: #777;
+    padding-left: 20px;
+}
+
+.links,
+.user_guesses,
+.submit_guess {
+    padding: 5px 0 5px 0;
+}
+
+.match_msg {
+    text-align: center;
+    font-weight: bold;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px #555 solid;
+    padding: 10px;
+}
+
+.my_guess {
+    font-size: 17px;
+    line-height: 17px;
+    margin-bottom: 20px;
+}
+
+.my_guess > h3 {
+    padding-left: 9px;
+}
+
+.msg {
+    width: 95%;
+    width: calc(100% - 60px);
+    margin: 10px auto;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.msg.alert-danger {
+    color: #8D2422;
+    border: #411717 1px solid;
+}
+
+.msg.alert-warning {
+    color: #8a6d3b;
+    border: rgba(179, 168, 109, 0.93) 1px solid;
+}
+
+.maroon {
+    color: maroon;
+}
+
+.msg {
+    font-size: 12px;
+}
+
+.ok {
+    color: green;
+}
+
+.error {
+    color: red
+}
+
+.submit > .btn-large {
+    width: 98px;
+    height: 46px;
+    font-size: 16px;
+    line-height: 30px;
+}

@@ -1,0 +1,9 @@
+<h1>ADMIN!!!</h1>
+
+<% @new_users.each do |new_user| %>
+
+    <pre>
+  <%= YAML::dump(new_user) %>
+</pre>
+
+<% end %>

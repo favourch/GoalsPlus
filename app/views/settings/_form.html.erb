@@ -1,0 +1,52 @@
+<%= form_for(@setting) do |f| %>
+    <% if @setting.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@setting.errors.count, "error") %> prohibited this stadium from being saved:</h2>
+
+          <ul>
+            <% @setting.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :screen_name %>
+      <br>
+      <%= f.text_field :screen_name, class: 'form-control input-lg' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :cell_phone %>
+      <br>
+      <%= f.number_field :cell_phone, class: 'form-control input-lg' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :role %>
+      <br>
+      <%= f.number_field :role, class: 'form-control input-lg' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :role %>
+      <br>
+      <%= f.number_field :role, class: 'form-control input-lg' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :timezone %>
+      <br>
+      <%= f.number_field :timezone, class: 'form-control input-lg' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :beer %>
+      <br>
+      <%= f.number_field :beer, class: 'form-control input-lg' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :language %>
+      <br>
+      <%= f.number_field :language, class: 'form-control input-lg' %>
+    </div>
+    <div class="form-group submit">
+      <%= f.submit class: 'edit btn btn-primary btn-large' %>
+    </div>
+<% end %>
