@@ -1,9 +1,27 @@
-<% provide(:title, 'Matches') %>
+<section class="alt extra-space top" style="background-color:rgba(0, 44, 22, 0.80);">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+        <div class="jumbotron">
+          <h2>Matches</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h3>Listing matches</h3>
+<section id="matchSection" class="alt extra-space">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-1 column">
+      </div>
+      <div class="col-md-10 column">
 
 
-<%= will_paginate @matches, outer_window: 0, class: 'shortPagination pagination', page_links: false %>
+        <% provide(:title, 'Matches') %>
+
+
+        <%= will_paginate @matches, outer_window: 0, class: 'shortPagination pagination', page_links: false %>
 <%= will_paginate @matches, class: 'pagination longPagination' %>
 
 
@@ -23,63 +41,69 @@
 
        my_guess = Guess.where(match_id: match.id, user_id: current_user.id).limit(1).count != 0
     %>
-
-
-    <div class="match" data-match="<%= match.id %>">
-      <div class="match_tab">
-        <div class="match_num">Match #<%= match.id %>.</div>
-        <div class="match_date"><%= local_time %></div>
-      </div>
-      <div class="match_body">
-
-        <% if matchTime > -86400 and matchTime < 0 and !my_guess %>
-            <div class="alert-danger">There are <%= local_time %> before the kick-off. Please submit your scores soon.
-            </div>
-        <% end %>
-
-        <div class="team_a">
-          <div class="team_name long"><%= match.team_a.name %></div>
-          <div class="team_name short"><%= match.team_a.short %></div>
-          <div class="team_score"><%= match.goals_a ? match.goals_a : ''
-          %><%= '('+match.pens_a.to_s+')' if match.pens_a %></div>
-        </div>
-        <div class="vs">vs.</div>
-        <div class="team_b">
-          <div class="team_name long"><%= match.team_b.name %></div>
-          <div class="team_name short"><%= match.team_b.short %></div>
-          <div class="team_score"><%= match.goals_b ? match.goals_b : ''
-          %><%= '('+match.pens_b.to_s+')' if match.pens_b %></div>
-        </div>
-
-
-        <div class="match_stats">
-          <div class="match_info">
-            <div class="row">
-              <div> <%= match.tournament.short %>, <%= match.stage.name %>  </div>
-            </div>
-
-            <div class="row">
-              <div><%= match[:date].to_s(:game) %> <span class="mobile">(<%= match[:date].strftime("%Z") %> time)</span>
+            <div class="frontGame" style="display: box">
+              <div class="panel panel-default">
+                <div class="panel-heading gameTitle">
+                  <div class="match_num">Match #<%= match.id %>.</div>
+                  <div class="match_date"><%= local_time %></div>
+                </div>
+                <div class="match_body">
+                  <% if matchTime > -86400 and matchTime < 0 and !my_guess %>
+                      <div class="msg alert-danger">There are <%= local_time %> before the kick-off. Please submit your
+                        scores soon.
+                      </div>
+                  <% else %>
+                      <div class="msg"></div>
+                  <% end %>
+                  <div class="teams">
+                    <div class="team_a">
+                      <div class="team_name short"><%= match.team_a.short %></div>
+                      <div class="team_name long"><%= match.team_a.name %></div>
+                    </div>
+                    <div class="vs">vs.</div>
+                    <div class="team_b">
+                      <div class="team_name short"><%= match.team_b.short %></div>
+                      <div class="team_name long"><%= match.team_b.name %></div>
+                    </div>
+                  </div>
+                  <div class="scores">
+                    <div class="team_a">
+                      <div class="team_score"><%= match.goals_a ? match.goals_a : '' %><%= '('+match.pens_a.to_s+')' if match.pens_a %></div>
+                    </div>
+                    <div class="vs"></div>
+                    <div class="team_b">
+                      <div class="team_score"><%= match.goals_b ? match.goals_b : '' %><%= '('+match.pens_b.to_s+')' if match.pens_b %></div>
+                    </div>
+                  </div>
+                  <div class="row clearfix">
+                    <div class="col-md-8 column">
+                      <div class="info-row">
+                        <div><%= match.tournament.short %>, <%= match.stage.name %></div>
+                      </div>
+                      <div class="info-row">
+                        <div><%= match[:date].to_s(:game) %>
+                          <span class="mobile">(<%= match[:date].strftime("%Z") %> time)</span></div>
+                      </div>
+                      <div class="info-row">
+                        <div><%= match.stadium.name %>
+                          <span class="mobile">(<%= match.stadium.city.name %>, <%= match.stadium.city.country.code %>
+                          )</span></div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 column">
+                      <% if can? :read, match %>
+                          <div class="match_link">
+                            <%= link_to 'Show', match, class: 'btn btn-primary btn-large' %>
+                          </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="row">
-              <div><%= match.stadium.name %>
-                <span class="mobile">(<%= match.stadium.city.name %>, <%= match.stadium.city.country.code %>)</span>
-              </div>
-            </div>
-          </div>
 
-          <% if can? :read, match %>
-              <div class="match_link">
-                <%= link_to 'Show', match, class: 'btn btn-primary btn-large' %>
-              </div>
-          <% end %>
 
-        </div>
-
-      </div>
-    </div>
 <% end %>
 
 <%= will_paginate @matches, outer_window: 0, class: 'shortPagination pagination', page_links: false %>
@@ -89,3 +113,10 @@
 <br/>
 
 <%= link_to 'New Match', new_match_path %>
+
+      </div>
+      <div class="col-md-1 column">
+      </div>
+    </div>
+  </div>
+</section>

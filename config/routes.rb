@@ -32,6 +32,9 @@ Soccer::Application.routes.draw do
   resources :settings
 
 
+  get 'main' => 'application#main'
+
+
   get 'guesses/new/:match_id/:pens' => 'guesses#new'
   get 'guesses/:id/edit/:match_id/:pens' => 'guesses#edit'
   get 'matches/:id/score' => 'matches#score'
@@ -42,7 +45,7 @@ Soccer::Application.routes.draw do
   #edit_setting_path	 GET	 /settings/:id/edit(.:format)	 settings#edi
 
 
-  root 'matches#index'
+  root 'application#main'
 
   # match 'matches/index', to: 'matches/index?page=3', via: get
 
