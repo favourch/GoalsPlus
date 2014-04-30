@@ -52,6 +52,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :cell_phone
       t.references :role, :default => 1, :null => false
       t.references :timezone, :default => 6
+      t.references :team, :default => 1
       t.string :beer, :default => "Beer"
       t.references :language, :default => 1
     end
@@ -60,6 +61,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     add_index :users, :setting_id
     add_index :settings, :timezone_id
     add_index :settings, :language_id
+    add_index :settings, :team_id
     add_index :settings, :role_id
     add_index :languages, :name, :unique => true
     add_index :roles, :name, :unique => true

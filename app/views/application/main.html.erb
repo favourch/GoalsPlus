@@ -42,11 +42,11 @@
               </div>
               <div class="scores">
                 <div class="team_a">
-                  <div class="team_score"><%= @lastMatch[:score_a] ? @lastMatch[:score_a] : '?' %></div>
+                  <div class="team_score"><%= @lastMatch[:score_a] %></div>
                 </div>
-                <div class="vs"></div>
+                <div class="vs"><%= @lastMatch[:pens] %></div>
                 <div class="team_b">
-                  <div class="team_score"><%= @lastMatch[:score_b] ? @lastMatch[:score_b] : '?' %></div>
+                  <div class="team_score"><%= @lastMatch[:score_b] %></div>
                 </div>
               </div>
               <div class="row clearfix">
@@ -93,7 +93,7 @@
                 <div class="team_a">
                   <div class="team_score"><%= @nextMatch[:score_a] ? @nextMatch[:score_a] : '?' %></div>
                 </div>
-                <div class="vs"></div>
+                <div class="vs"><%= @lastMatch[:pens] %></div>
                 <div class="team_b">
                   <div class="team_score"><%= @nextMatch[:score_b] ? @nextMatch[:score_b] : '?' %></div>
                 </div>

@@ -33,10 +33,8 @@ class ApplicationController < ActionController::Base
         tournament: m.tournament.short.to_s + ', ' + m.stage.name,
         date: m.date.to_s(:game),
         pens: m.pens,
-        goals_a: m.goals_a,
-        goals_b: m.goals_b,
-        pens_a: m.pens_a,
-        pens_b: m.pens_b
+        score_a: (m.goals_a ? m.goals_a.to_s : '?') + (m.pens_a ? '(' + m.pens_a.to_s + ')' : ''),
+        score_b: (m.goals_b ? m.goals_b.to_s : '?') + (m.pens_b ? '(' + m.pens_b.to_s + ')' : '')
     }
 
     m = Match.where("date <= :date", {date: today}).order("date DESC").first
@@ -49,15 +47,13 @@ class ApplicationController < ActionController::Base
         location: m.stadium.name.to_s + ' (' + m.stadium.city.name.to_s + ', ' + m.stadium.city.country.code.to_s + ')',
         tournament: m.tournament.short.to_s + ', ' + m.stage.name,
         date: m.date.to_s(:game),
-        pens: m.pens,
-        goals_a: m.goals_a,
-        goals_b: m.goals_b,
-        pens_a: m.pens_a,
-        pens_b: m.pens_b
+        pens: (m.pens_a and m.pens_b) ? '(pens)' : '',
+        score_a: (m.goals_a ? m.goals_a.to_s : '?') + (m.pens_a ? '(' + m.pens_a.to_s + ')' : ''),
+        score_b: (m.goals_b ? m.goals_b.to_s : '?') + (m.pens_b ? '(' + m.pens_b.to_s + ')' : '')
     }
 
-    points = User.joins("LEFT JOIN `guesses` ON users.id = guesses.user_id")
-    .select('users.*, count(guesses.user_id) as games, sum(guesses.points) as points')
+    points = User.joins("LEFT JOIN (SELECT  `guesses`.`user_id` as `user_id` , `guesses`.`points` as `points`, `matches`.`date` as `date` FROM `matches`, `guesses` WHERE `guesses`.`match_id` = `matches`.`id` AND `matches`.`date` < '#{today}') as `g` ON users.id = g.user_id")
+    .select('users.*, count(g.user_id) as games, sum(g.points) as points')
     .group('users.id')
     .order("points DESC, games ASC")
     .limit(5);
