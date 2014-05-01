@@ -6,7 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :email, null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
-      t.references :settings, null: false, default: 1
+      t.references :setting, null: false, default: 1
 
       ## Recoverable
       t.string :reset_password_token
@@ -48,13 +48,13 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
 
     create_table(:settings) do |t|
-      t.string :screen_name, :default => '', :null => false
-      t.string :cell_phone
-      t.references :role, :default => 1, :null => false
-      t.references :timezone, :default => 6
-      t.references :team, :default => 1
-      t.string :beer, :default => "Beer"
-      t.references :language, :default => 1
+      t.string :screen_name, default: '', null: false
+      t.string :cell_phone, default: nil
+      t.references :role, default: 1, null: false
+      t.references :timezone, default: 6
+      t.references :team, default: 1
+      t.string :beer, default: "Beer"
+      t.references :language, default: 1
     end
 
 

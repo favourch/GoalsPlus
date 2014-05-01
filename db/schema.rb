@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 20140417035309) do
     t.string "cell_phone"
     t.integer "role_id", default: 1, null: false
     t.integer "timezone_id", default: 6
+    t.integer "team_id", default: 1
     t.string "beer", default: "Beer"
     t.integer "language_id", default: 1
   end
@@ -115,6 +116,7 @@ ActiveRecord::Schema.define(version: 20140417035309) do
   add_index "settings", ["language_id"], name: "index_settings_on_language_id", using: :btree
   add_index "settings", ["role_id"], name: "index_settings_on_role_id", using: :btree
   add_index "settings", ["screen_name"], name: "index_settings_on_screen_name", unique: true, using: :btree
+  add_index "settings", ["team_id"], name: "index_settings_on_team_id", using: :btree
   add_index "settings", ["timezone_id"], name: "index_settings_on_timezone_id", using: :btree
 
   create_table "stadia", force: true do |t|

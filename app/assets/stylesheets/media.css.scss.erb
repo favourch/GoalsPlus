@@ -17,6 +17,10 @@
         padding-top: 0;
         padding-left: 0;
         padding-right: 0;
+        .row.clearfix {
+            margin-left: 0;
+            margin-right: 0;
+        }
     }
 
     footer {
@@ -91,6 +95,9 @@
     }
     .match_link {
         margin-top: 20px;
+        a {
+            margin-right: 0;
+        }
     }
     .mobile {
         display: none;
@@ -110,7 +117,9 @@
     }
 
     .shortPagination {
-        display: flex;
+        display: block;
+        padding-bottom: 25px;
+        margin-top: 15px;
     }
 
     .longPagination {
@@ -135,17 +144,27 @@
         }
     }
 
+    .panel.buttons {
+        .row.clearfix {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+    }
     section.top {
         background-size: 768px;
         background-position: center;
 
         .row {
-            margin-left: -10px;
-            margin-right: -10px;
+            margin-left: 0;
+            margin-right: 0;
+            .column {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
         }
 
         .container {
-            padding: 0 5px 0 5px;
+            padding: 0 0px 0 0px;
         }
 
         .jumbotron {
