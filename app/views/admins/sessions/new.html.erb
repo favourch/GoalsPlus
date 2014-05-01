@@ -1,33 +1,68 @@
-<h3>
-  Login Page !!!!!!!
-</h3>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {role: 'form'}) do |f| %>
-    <%= devise_error_messages! %>
-    <div class="form-group">
-      <%= f.label :user_name %>
-      <br/>
-      <%= f.text_field :user_name, :autofocus => true, class: 'form-control input-lg', placeholder: 'Login' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :password %>
-      <br/>
-      <%= f.password_field :password, class: 'form-control input-lg', placeholder: 'Password' %>
-    </div>
-
-    <% if devise_mapping.rememberable? -%>
-        <div class="checkbox">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+<section class="alt extra-space top" style="background-color:rgba(0, 44, 22, 0.80);">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+        <div class="jumbotron">
+          <h2>Please Login to the website:</h2>
         </div>
-    <% end -%>
-
-    <div>
-      <%= f.submit "Sign in", class: 'btn btn-primary btn-large' %>
+      </div>
     </div>
-<% end %>
+  </div>
+</section>
 
-<div class="user_links">
-  <%= render "devise/shared/links" %>
-</div>
+
+<section id="matchSection" class="alt extra-space">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-1 column">
+      </div>
+      <div class="col-md-9 column">
+
+
+        <div class="frontGame" style="display: box">
+          <div class="panel panel-default">
+            <div class="match_body">
+
+              <div class="msg alert-info"><%= notice %></div>
+
+
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {role: 'form'}) do |f| %>
+                  <%= devise_error_messages! %>
+                  <div class="form-group">
+                    <%= f.label :user_name %>
+                    <br/>
+                    <%= f.text_field :user_name, :autofocus => true, class: 'form-control input-lg', placeholder: 'Login' %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.label :password %>
+                    <br/>
+                    <%= f.password_field :password, class: 'form-control input-lg', placeholder: 'Password' %>
+                  </div>
+
+                  <% if devise_mapping.rememberable? -%>
+                      <div class="checkbox">
+                        <%= f.check_box :remember_me %>
+                        <%= f.label :remember_me %>
+                      </div>
+                  <% end -%>
+
+                  <div>
+                    <%= f.submit "Sign in", class: 'btn btn-primary btn-large' %>
+                  </div>
+              <% end %>
+
+              <div class="user_links">
+                <%= render "devise/shared/links" %>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-1 column"></div>
+    </div>
+  </div>
+</section>

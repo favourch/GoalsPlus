@@ -73,6 +73,8 @@ class ApplicationController < ActionController::Base
     end
 
 
+    @new_users = User.joins(:setting).where(settings: {role_id: 3})
+
   end
 
   protected

@@ -3,19 +3,30 @@
     <div class="row clearfix">
       <div class="col-md-12 column">
         <div class="jumbotron">
+
+          <div class="msg alert-success"><%= notice %></div>
+
+          <% if current_user.setting_id == 1 %>
+              <div class='msg alert-warning'>Please update your settings. It is really important.</div>
+          <% end %>
+
+          <% if current_user.setting.role_id == 3 %>
+              <div class='msg alert-warning'>A message has been sent to an administrator. You will be activated soon.
+              </div>
+          <% end %>
+
+
           <h2>Latest News</h2>
 
           <p><span>[2nd May] </span>The website is using new interface.</p>
-
           <p><span>[1st May] </span>John has joined our tournament</p>
-
           <p><span>[30th Apr] </span>Mike has scored 3 points in 4 games in a row!</p>
-
           <p><span>[29th Apr] </span>Server will be down for a maintanance next week.</p>
-
           <p><span>[29th May] </span>New matches have been added</p>
 
-          <p><a class="btn btn-primary btn-large" href="#">More news</a></p>
+          <% if can? :create, Guess %>
+              <p><a class="btn btn-primary btn-large" href="#">More news</a></p>
+          <% end %>
         </div>
       </div>
     </div>
@@ -63,8 +74,10 @@
                 </div>
                 <div class="col-md-4 column">
                   <div class="matchLinks">
-                    <%= link_to 'View details »', "matches/#{@lastMatch[:id]}", class: 'btn' %>
-                    <%= link_to 'All matches »', "matches", class: 'btn' %>
+                    <% if can? :create, Guess %>
+                        <%= link_to 'View details »', "matches/#{@lastMatch[:id]}", class: 'btn text' %>
+                    <% end %>
+                    <%= link_to 'All matches »', "matches", class: 'btn text' %>
                   </div>
                 </div>
               </div>
@@ -112,8 +125,11 @@
                 </div>
                 <div class="col-md-4 column">
                   <div class="matchLinks">
-                    <%= link_to 'View details »', "matches/#{@nextMatch[:id]}", class: 'btn' %>
-                    <%= link_to 'All matches »', "matches", class: 'btn' %>
+                    <% if can? :create, Guess %>
+                        <%= link_to 'View details »', "matches/#{@nextMatch[:id]}", class: 'btn text' %>
+                    <% end %>
+
+                    <%= link_to 'All matches »', "matches", class: 'btn text' %>
                   </div>
                 </div>
               </div>
@@ -152,11 +168,14 @@
                   </tr>
               <% end %>
               </tbody>
+              <% if can? :create, Guess %>
+
               <thead>
               <tr>
                 <td colspan="4"><a class="btn" href="#">View details »</a></td>
               </tr>
               </thead>
+              <% end %>
             </table>
           </div>
         </div>
@@ -184,9 +203,12 @@
                   <div>[Sam. 2 May, 12:24]</div>
                 </td>
               </tr>
+              <% if can? :create, Guess %>
               <tr>
                 <td colspan="4"><a class="btn" href="#">View details »</a></td>
               </tr>
+              <% end %>
+
               </tbody>
             </table>
           </div>

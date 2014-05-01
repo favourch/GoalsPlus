@@ -49,12 +49,13 @@
                 </div>
                 <div class="match_body">
                   <% if matchTime > -86400 and matchTime < 0 and !my_guess %>
-                      <div class="msg alert-danger">There are <%= local_time %> before the kick-off. Please submit your
+                      <div class="msg smaller alert-danger">There are <%= local_time %> before the kick-off. Please
+                        submit your
                         scores soon.
                       </div>
                   <% else %>
-                      <div class="msg"></div>
-                  <% end %>
+                      <div class="msg smaller"></div>
+                <% end %>
                   <div class="teams">
                     <div class="team_a">
                       <div class="team_name short"><%= match.team_a.short %></div>
@@ -111,9 +112,6 @@
 
 
 <br/>
-
-<%= link_to 'New Match', new_match_path %>
-
       </div>
       <div class="col-md-1 column">
       </div>
