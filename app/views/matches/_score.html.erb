@@ -45,15 +45,18 @@
             </div>
           </div>
 
+          <div class="form-group submit">
+            <%= f.submit class: 'btn btn-success btn-large', value: 'Update' %>
+          </div>
 
           <div class="panel panel-default tCoefficients">
             <div class="panel-heading coofTitle">Match Coefficients</div>
             <table class="table standings">
               <tbody>
               <tr>
-                <td class="tCoof"><%= @match.coof_a %></td>
-                <td class="tCoof"><%= @match.coof_x %></td>
-                <td class="tCoof"><%= @match.coof_b %></td>
+                <td class="tCoof"><%= @match.coof_a ? @match.coof_a : '?' %></td>
+                <td class="tCoof"><%= @match.coof_x ? @match.coof_x : '?' %></td>
+                <td class="tCoof"><%= @match.coof_b ? @match.coof_b : '?' %></td>
               </tr>
               </tbody>
             </table>
@@ -78,8 +81,25 @@
               </div>
           <% end %>
 
-          <div class="info-row actions">
-            <%= f.submit class: 'btn btn-primary btn-large' %>
+          <div class="panel panel-default buttons">
+            <div class="row clearfix">
+              <div class="col-md-3 column">
+                <%= link_to 'All Matches', '/matches', class: 'btn btn-primary btn-large new' %>
+              </div>
+              <div class="col-md-3 column">
+                <%= link_to 'View Match', "/matches/#{@match[:id]}", class: 'btn btn-primary btn-large new' %>
+              </div>
+              <% if can? :create, Match %>
+                  <div class="col-md-3 column">
+                    <%= link_to 'Edit Match', edit_match_path(@match), class: 'btn btn-primary btn-large new' %>
+                  </div>
+              <% end %>
+              <% if can? :delete, Match %>
+                  <div class="col-md-3 column">
+                    <%= link_to 'Destroy', @match, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-large new' %>
+                  </div>
+              <% end %>
+            </div>
           </div>
 
         </div>

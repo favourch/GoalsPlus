@@ -15,6 +15,8 @@
 
     .match_body {
         padding-top: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     footer {
@@ -24,6 +26,7 @@
     .form-inline .form-control {
         display: inline-block !important;
     }
+
     .row {
         padding-left: 0px !important;
     }
@@ -44,12 +47,14 @@
 
     .match_num {
         padding-left: 5px;
-        width: 90px
+        font-size: 16px;
+        width: 100px
     }
 
     .match_date {
         padding-right: 5px;
-        width: calc(100% - 100px);
+        font-size: 16px;
+        width: calc(100% - 110px);
         text-align: right;
     }
 
@@ -92,12 +97,8 @@
     }
 
     .msg {
-        border-left: none;
-        border-right: none;
-        border-top: none;
         width: 100%;
         margin-top: 0;
-        font-size: 12px;
     }
 
     .team_name.short {
@@ -244,6 +245,14 @@
             border-top: 1px gray solid;
             text-align: left;
             position: auto;
+        }
+        .match_link {
+            width: 100%;
+            float: none;
+            margin-bottom: 10px;
+            .btn {
+                width: 100%;
+            }
         }
     }
 }

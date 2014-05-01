@@ -16,12 +16,12 @@
       <div class="col-md-1 column">
       </div>
       <div class="col-md-10 column">
-
         <div class="frontGame" style="display: box">
           <div class="panel panel-default">
             <div class="match_body">
 
-              <% if can? :create, @match[:guesses] %>
+
+            <% if can? :create, @match[:guesses] %>
                   <% if @match[:danger] %>
                       <div class="msg alert-danger">There are <%= @match[:local_time] %> before the kick-off. Please
                         submit your scores soon.
@@ -30,6 +30,9 @@
                       <div class="msg alert-warning">You have not submitted your scores yet.</div>
                   <% end %>
               <% end %>
+
+              <div class="msg alert-success"><%= notice %></div>
+
 
               <div class="teams">
                 <div class="team_a">
@@ -71,12 +74,11 @@
             <div class="match_data">
               <% if can? :create, @match[:guesses] %>
                   <div class="my_guess" data-match="<%= @match[:id] %>" style="display: box">
-
                     <% if @match[:past] %>
                     <% elsif @match[:my_guess].count == 0 %>
-              <%= render '/guesses/guess', guess: Guess.new, match_id: @match[:id], pens: @match[:pens] %>
+                        <%= render '/guesses/guess', guess: Guess.new, match_id: @match[:id], pens: @match[:pens] %>
                     <% else %>
-              <%= render "/guesses/form", guess: Guess.find(@match[:my_guess]), match_id: @match[:id], pens: @match[:pens] %>
+                        <%= render "/guesses/form", guess: Guess.find(@match[:my_guess]), match_id: @match[:id], pens: @match[:pens] %>
                     <% end %>
                   </div>
               <% end %>
@@ -84,9 +86,9 @@
               <div class="user_guesses" style="display: box">
                 <% if can? :read, Guess %>
                     <div class="panel panel-default">
-                    <% if @match[:guesses].count == 0 %>
+                      <% if @match[:guesses].count == 0 %>
                           <div class="panel-heading">No scores have been submitted</div>
-                    <% else %>
+                      <% else %>
                           <div class="panel-heading">User Scores</div>
                           <table class="table">
                             <% @match[:guesses].each do |guess| %>
@@ -95,48 +97,59 @@
                                   <% if @match[:date] > Time.current %>
                                       <td>submitted his scores.</td>
                                   <% else %>
-                                      <td><%= guess.goals_a %>:<%= guess.goals_b %>
+                                      <td>
+                                        <%= guess.goals_a %>:<%= guess.goals_b %>
                                         <% if guess.pens_a and guess.pens_b %> (<%= guess.pens_a %>:<%= guess.pens_b %>)
-                                        <% end %></td>
+                                        <% end %>
+                                      </td>
                                       <td>
                                         <% if guess.points
                                              points = 'points'
-                                   if guess.points >= 3
-                                     alert = 'alert-success'
-                                   elsif guess.points >= 1
-                                     alert = 'alert-warning'
-                                     points = 'point'
-                                   else
-                                     alert = ''
-                                   end
-                                        %>
+                                             if guess.points >= 3
+                                               alert = 'alert-success'
+                                             elsif guess.points >= 1
+                                               alert = 'alert-warning'
+                                               points = 'point'
+                                             else
+                                               alert = ''
+                                             end %>
                                             <div class='badge <%= alert %>'><%= guess.points %><%= points %></div>
-                                        <% end %></td>
-                                <% end %>
+                                        <% end %>
+                                      </td>
+                                  <% end %>
                                 </tr>
-                            <% end %>
+                          <% end %>
                           </table>
-                    <% end %>
+                      <% end %>
                     </div>
-                <% end %>
-          </div>
-
-              <% if can? :delete, @match %>
-                  <%#= link_to 'Destroy', @match, method: :delete, data: { confirm: 'Are you sure?' } %>
-                  <div class="row clearfix">
-                    <div class="col-md-4 column">
-                      <%= link_to 'Edit Match', edit_match_path(@match), class: 'btn btn-primary btn-large new' %>
-                    </div>
-                    <div class="col-md-4 column">
-                      <%= link_to 'Real Scores', "#{@match[:id]}/score", class: 'btn btn-primary btn-large new' %>
-                    </div>
-                    <div class="col-md-4 column">
-                      <%= link_to 'Destroy', @match, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary btn-large new' %>
-          </div>
-                  </div>
               <% end %>
-          </div>
+              </div>
+              <%#= link_to 'Destroy', @match, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <div class="panel panel-default buttons">
+                <div class="row clearfix">
+                  <div class="col-md-3 column">
+                    <%= link_to 'All Matches', '/matches', class: 'btn btn-primary btn-large new' %>
+                  </div>
+                  <% if can? :create, Match %>
+                      <div class="col-md-3 column">
+                        <%= link_to 'Edit Match', edit_match_path(@match), class: 'btn btn-primary btn-large new' %>
+                      </div>
+                  <% end %>
+                  <% if can? :create, Match %>
+                      <div class="col-md-3 column">
+                        <%= link_to 'Real Scores', "#{@match[:id]}/score", class: 'btn btn-primary btn-large new' %>
+                      </div>
+                  <% end %>
+                  <% if can? :destroy, Match %>
 
+                      <div class="col-md-3 column">
+                        <%= link_to 'Destroy', @match, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-large new' %>
+                  </div>
+                  <% end %>
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

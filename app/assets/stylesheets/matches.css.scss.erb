@@ -54,7 +54,7 @@
     background-color: #fff;
     padding-bottom: 20px;
     border-radius: 0 5px 5px;
-    padding-top: 10px;
+    padding: 10px 10px 10px 10px;
 }
 
 .team_b, .team_a, .vs {
@@ -247,6 +247,14 @@ td > .badge {
     }
 }
 
+.panel.panel-default.buttons {
+    border: none;
+    background: none;
+    background-image: none;
+    margin-bottom: 0px;
+    padding: 20px 0 20px 0
+}
+
 .match_msg {
     text-align: center;
     font-weight: bold;
@@ -274,6 +282,8 @@ td > .badge {
     padding: 5px;
     border-radius: 4px;
     text-align: center;
+    font-size: 16px;
+    line-height: 25px;
 }
 
 .msg.alert-danger {
@@ -286,12 +296,13 @@ td > .badge {
     border: rgba(179, 168, 109, 0.93) 1px solid;
 }
 
-.maroon {
-    color: maroon;
+.msg.alert-success {
+    color: #074f12;
+    border: rgba(13, 99, 17, 0.93) 1px solid
 }
 
-.msg {
-    font-size: 12px;
+.maroon {
+    color: maroon;
 }
 
 .msg:empty {
@@ -345,4 +356,21 @@ td > .badge {
     }
 
 }
+
+.form-group > label {
+    margin-left: 5px;
+}
+
+.panel.panel-default.coefficients {
+
+    background-color: none;
+    background: none;
+    border: none;
+
+    .form-group {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
 

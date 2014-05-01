@@ -1,6 +1,29 @@
-<h1>Editing match</h1>
+<section class="alt extra-space top" style="background-color:rgba(0, 44, 22, 0.80);">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+        <div class="jumbotron">
+          <h2>Editing match #<%= @match.id %>:</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @match %> |
-<%= link_to 'Back', matches_path %>
+<section id="matchSection" class="alt extra-space">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-1 column">
+      </div>
+      <div class="col-md-9 column">
+
+        <%= render 'match' %>
+
+      </div>
+      <div class="col-md-1 column"></div>
+    </div>
+  </div>
+</section>
+
+

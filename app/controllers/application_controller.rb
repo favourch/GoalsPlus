@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
 
   def main
-    today = Time.current().to_s(:timestamp)
+    today = Time.current().to_s(:db)
 
 
     m = Match.where("date > :date", {date: today}).order("date ASC").first
@@ -32,12 +32,13 @@ class ApplicationController < ActionController::Base
         location: m.stadium.name.to_s + ' (' + m.stadium.city.name.to_s + ', ' + m.stadium.city.country.code.to_s + ')',
         tournament: m.tournament.short.to_s + ', ' + m.stage.name,
         date: m.date.to_s(:game),
+        dates: m.date.to_s(),
         pens: m.pens,
         score_a: (m.goals_a ? m.goals_a.to_s : '?') + (m.pens_a ? '(' + m.pens_a.to_s + ')' : ''),
         score_b: (m.goals_b ? m.goals_b.to_s : '?') + (m.pens_b ? '(' + m.pens_b.to_s + ')' : '')
     }
 
-    m = Match.where("date <= :date", {date: today}).order("date DESC").first
+    m = Match.where("date < :date", {date: today}).order("date DESC").first
     @lastMatch = {
         id: m.id,
         team_a: m.team_a.name,
@@ -47,6 +48,7 @@ class ApplicationController < ActionController::Base
         location: m.stadium.name.to_s + ' (' + m.stadium.city.name.to_s + ', ' + m.stadium.city.country.code.to_s + ')',
         tournament: m.tournament.short.to_s + ', ' + m.stage.name,
         date: m.date.to_s(:game),
+        dates: m.date.to_s(),
         pens: (m.pens_a and m.pens_b) ? '(pens)' : '',
         score_a: (m.goals_a ? m.goals_a.to_s : '?') + (m.pens_a ? '(' + m.pens_a.to_s + ')' : ''),
         score_b: (m.goals_b ? m.goals_b.to_s : '?') + (m.pens_b ? '(' + m.pens_b.to_s + ')' : '')
@@ -69,7 +71,6 @@ class ApplicationController < ActionController::Base
                           points: p.points
                       })
     end
-    puts YAML::dump(@standings);
 
 
   end

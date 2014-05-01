@@ -28,7 +28,7 @@ class GuessesController < ApplicationController
     @pens = to_bool(params[:pens])
     @guess_id = params[:id]
 
-    puts @pens
+
   end
 
   # POST /guesses
@@ -39,7 +39,7 @@ class GuessesController < ApplicationController
     respond_to do |format|
       if @guess.save
         format.json { render action: 'show', status: :created, location: @guess }
-        format.html { redirect_to @guess, notice: 'Guess was successfully created.' }
+        format.html { redirect_to Match.find(@guess.match_id), notice: 'You successfully submitted the score.' }
       else
         format.json { render json: @guess.errors, status: :unprocessable_entity }
         format.html { render action: 'new' }
@@ -50,10 +50,13 @@ class GuessesController < ApplicationController
   # PATCH/PUT /guesses/1
   # PATCH/PUT /guesses/1.json
   def update
+
+
     respond_to do |format|
       if @guess.update(guess_params)
+
         format.json { head :no_content }
-        format.html { redirect_to '@guess', notice: 'Guess was successfully updated.' }
+        format.html { redirect_to Match.find(@guess.match_id), notice: 'You successfully update the score.' }
       else
         format.json { render json: @guess.errors, status: :unprocessable_entity }
         format.html { render action: 'edit' }

@@ -1,6 +1,4 @@
-<% puts YAML::dump(@match) %>
-
-<%= form_for(@match) do |f| %>
+<%= form_for(@match, html: {role: 'form', class: 'form-horizontal'}) do |f| %>
     <% if @match.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
@@ -13,67 +11,125 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :team_a %>
-      <br>
+    <div class="frontGame" style="display: box">
+      <div class="panel panel-default">
+        <div class="match_body">
 
-      <%= f.collection_select :team_a_id, @teams, :id, :name, prompt: true %>
+          <div class="form-group">
+            <%= f.label 'First Team', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.collection_select :team_a_id, @teams, :id, :name, {prompt: true}, {class: 'form-control'} %>
+            </div>
+          </div>
 
-    </div>
-    <div class="field">
-      <%= f.label :team_b %>
-      <br>
-      <%= f.collection_select :team_b_id, @teams, :id, :name, prompt: true %>
-    </div>
-    <div class="field">
-      <%= f.label :stadium %>
-      <br>
-      <%= f.collection_select :stadium_id, @stadiums, :id, :name, prompt: true %>
+          <div class="form-group">
+            <%= f.label 'Visitors Team', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.collection_select :team_b_id, @teams, :id, :name, {prompt: true}, {class: 'form-control'} %>
+            </div>
+          </div>
 
-    </div>
-    <div class="field">
-      <%= f.label :tournament %>
-      <br>
-      <%= f.collection_select :tournament_id, @tournaments, :id, :name, prompt: true %>
+          <div class="form-group">
+            <%= f.label 'Stadium', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.collection_select :stadium_id, @stadiums, :id, :name, {prompt: true}, {class: 'form-control'} %>
+            </div>
+          </div>
 
-    </div>
-    <div class="field">
-      <%= f.label :stage %>
-      <br>
-      <%= f.collection_select :stage_id, @stage, :id, :name, prompt: true %>
+          <div class="form-group">
+            <%= f.label 'Tournament', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.collection_select :tournament_id, @tournaments, :id, :name, {prompt: true}, {class: 'form-control'} %>
+            </div>
+          </div>
 
-    </div>
-    <div class="field">
-      <%= f.label :date %>
-      <br>
-      <%= f.datetime_select :date %>
-    </div>
-    <div class="field">
-      <%= f.label :timezone %>
-      <br>
-      <%= f.collection_select :timezone_id, @timezone, :id, :name, prompt: true %>
-    </div>
-    <div class="field">
-      <%= f.label :pens %>
-      <br>
-      <%= f.check_box :pens, value: @match.pens %>
-    </div>
-    <div class="field">
-      <%= f.label :coof_a %>
-      <br>
-      <%= f.text_field :coof_a, value: @match.coof_a %>
-    </div>
-    <div class="field">
-      <%= f.label :coof_x %>
-      <br>
-      <%= f.text_field :coof_x, value: @match.coof_x %>
-    </div>
-    <div class="field">
-      <%= f.label :coof_b %>
-      <br>
-      <%= f.text_field :coof_b, value: @match.coof_b %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
+          <div class="form-group">
+            <%= f.label 'Stage', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.collection_select :stage_id, @stage, :id, :name, {prompt: true}, {class: 'form-control'} %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label 'Date', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.datetime_select :date, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label 'TimeZone', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.collection_select :timezone_id, @timezone, :id, :name, {prompt: true}, {class: 'form-control'} %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label 'Penalties', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-7">
+              <%= f.check_box :pens, value: @match.pens, class: 'form-control' %>
+            </div>
+          </div>
+
+
+          <div class="panel panel-default coefficients">
+
+            <div class="row clearfix">
+              <div class="col-md-4 column">
+                <div class="form-group">
+                  <%= f.label 'Home', class: 'control-label' %>
+
+                  <%= f.text_field :coof_a, value: @match.coof_a, class: 'form-control' %>
+
+                </div>
+              </div>
+              <div class="col-md-4 column">
+                <div class="form-group">
+                  <%= f.label 'Draw', class: ' control-label' %>
+
+                  <%= f.text_field :coof_x, value: @match.coof_x, class: 'form-control' %>
+
+                </div>
+              </div>
+              <div class="col-md-4 column">
+                <div class="form-group">
+                  <%= f.label 'Visitor', class: 'control-label' %>
+
+                  <%= f.text_field :coof_b, value: @match.coof_b, class: 'form-control' %>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group submit">
+            <%= f.submit class: 'btn btn-success btn-large', value: 'Update' %>
+          </div>
+
+
+          <div class="panel panel-default buttons">
+            <div class="row clearfix">
+              <div class="col-md-3 column">
+                <%= link_to 'All Matches', '/matches', class: 'btn btn-primary btn-large new' %>
+              </div>
+              <div class="col-md-3 column">
+                <%= link_to 'View Match', "/matches/#{@match[:id]}", class: 'btn btn-primary btn-large new' %>
+              </div>
+              <% if can? :create, Match %>
+                  <div class="col-md-3 column">
+                    <%= link_to 'Real Scores', "score", class: 'btn btn-primary btn-large new' %>
+                  </div>
+              <% end %>
+              <% if can? :delete, Match %>
+                  <div class="col-md-3 column">
+                    <%= link_to 'Destroy', @match, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-large new' %>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
 <% end %>
