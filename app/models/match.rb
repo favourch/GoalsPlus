@@ -6,4 +6,9 @@ class Match < ActiveRecord::Base
   belongs_to :stage
   belongs_to :timezone
   has_many :guesses
+
+
+  accepts_nested_attributes_for :stadium
+
+
 end

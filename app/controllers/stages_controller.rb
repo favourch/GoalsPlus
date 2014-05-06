@@ -1,6 +1,8 @@
 class StagesController < ApplicationController
   before_action :set_stage, only: [:show, :edit, :update, :destroy]
 
+  layout false
+
   # GET /stages
   # GET /stages.json
   def index
@@ -28,11 +30,11 @@ class StagesController < ApplicationController
 
     respond_to do |format|
       if @stage.save
-        format.html { redirect_to @stage, notice: 'Stage was successfully created.' }
         format.json { render action: 'show', status: :created, location: @stage }
+        format.html { redirect_to @stage, notice: 'Stage was successfully created.' }
       else
-        format.html { render action: 'new' }
         format.json { render json: @stage.errors, status: :unprocessable_entity }
+        format.html { render action: 'new' }
       end
     end
   end
@@ -42,11 +44,11 @@ class StagesController < ApplicationController
   def update
     respond_to do |format|
       if @stage.update(stage_params)
-        format.html { redirect_to @stage, notice: 'Stage was successfully updated.' }
         format.json { head :no_content }
+        format.html { redirect_to @stage, notice: 'Stage was successfully updated.' }
       else
-        format.html { render action: 'edit' }
         format.json { render json: @stage.errors, status: :unprocessable_entity }
+        format.html { render action: 'edit' }
       end
     end
   end

@@ -13,13 +13,18 @@ class MatchesController < ApplicationController
     Time.zone = current_user.setting.timezone.name
 
     #today = Time.zone.parse('2014-06-29 17:00:00').to_s(:db)
-    today = Date.current().to_s(:db)
+    today = Time.current().to_s(:db)
 
-    current_page = (Match.where("date <= :date", {date: today}).count.to_f / per_page).ceil
+    current_page = (Match.where("date <= :date", {date: today}).count.to_f / per_page + 0.01).ceil
+
+
+    puts 'PAGE!!! ' + Match.where("date <= :date", {date: today}).count.to_s
+
 
     current_page = 1 if current_page == 0
 
     page = params[:page] ? params[:page] : current_page
+
 
     @matches = Match.order("date ASC").paginate(:page => page, :per_page => per_page)
 
@@ -341,7 +346,9 @@ class MatchesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def match_params
-    params.require(:match).permit(:team_a, :team_b, :stadium, :tournament, :stage, :date, :timezone, :pens, :goals_a, :goals_b, :pens_a, :pens_b, :coof_a, :coof_x, :coof_b)
+    params.require(:match).permit(:team_a, :team_b, {:stadiums_attributes => [:id, :name]}, :tournament, :stage, :date, :timezone, :pens, :goals_a, :goals_b, :pens_a, :pens_b, :coof_a, :coof_x, :coof_b)
+
+
   end
 
   public

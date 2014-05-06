@@ -15,39 +15,66 @@
       <div class="panel panel-default">
         <div class="match_body">
 
-          <div class="form-group">
+          <div class="form-group" data-action="teams">
             <%= f.label 'First Team', class: 'col-sm-4 control-label' %>
-            <div class="col-sm-7">
+            <div class="col-sm-6">
               <%= f.collection_select :team_a_id, @teams, :id, :name, {prompt: true}, {class: 'form-control'} %>
             </div>
+            <div class="col-sm-2">
+              <%= render '/layouts/formicons' %>
+            </div>
+            <div class="col-sm-12 load"></div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" data-action="teams">
             <%= f.label 'Visitors Team', class: 'col-sm-4 control-label' %>
-            <div class="col-sm-7">
+            <div class="col-sm-6">
               <%= f.collection_select :team_b_id, @teams, :id, :name, {prompt: true}, {class: 'form-control'} %>
             </div>
+            <div class="col-sm-2">
+              <%= render '/layouts/formicons' %>
+            </div>
+            <div class="col-sm-12 load"></div>
+
           </div>
 
-          <div class="form-group">
+          <div class="form-group" data-action="stadia">
             <%= f.label 'Stadium', class: 'col-sm-4 control-label' %>
-            <div class="col-sm-7">
+            <div class="col-sm-6">
+
+
               <%= f.collection_select :stadium_id, @stadiums, :id, :name, {prompt: true}, {class: 'form-control'} %>
             </div>
+            <div class="col-sm-2">
+              <%= render '/layouts/formicons' %>
+            </div>
+            <div class="col-sm-12 load"></div>
+
           </div>
 
-          <div class="form-group">
+          <div class="form-group" data-action="tournaments">
             <%= f.label 'Tournament', class: 'col-sm-4 control-label' %>
-            <div class="col-sm-7">
+            <div class="col-sm-6">
               <%= f.collection_select :tournament_id, @tournaments, :id, :name, {prompt: true}, {class: 'form-control'} %>
             </div>
+            <div class="col-sm-2">
+              <%= render '/layouts/formicons' %>
+            </div>
+            <div class="col-sm-12 load"></div>
+
           </div>
 
-          <div class="form-group">
+          <div class="form-group" data-action="stages">
             <%= f.label 'Stage', class: 'col-sm-4 control-label' %>
-            <div class="col-sm-7">
+            <div class="col-sm-6">
               <%= f.collection_select :stage_id, @stage, :id, :name, {prompt: true}, {class: 'form-control'} %>
             </div>
+            <div class="col-sm-2">
+              <%= render '/layouts/formicons' %>
+            </div>
+            <div class="col-sm-12 load"></div>
+
+
           </div>
 
           <div class="form-group">
@@ -55,6 +82,8 @@
             <div class="col-sm-7">
               <%= f.datetime_select :date, class: 'form-control' %>
             </div>
+            <div class="col-sm-1"></div>
+
           </div>
 
           <div class="form-group">
@@ -62,6 +91,8 @@
             <div class="col-sm-7">
               <%= f.collection_select :timezone_id, @timezone, :id, :name, {prompt: true}, {class: 'form-control'} %>
             </div>
+            <div class="col-sm-1"></div>
+
           </div>
 
           <div class="form-group">
@@ -69,6 +100,8 @@
             <div class="col-sm-7">
               <%= f.check_box :pens, value: @match.pens, class: 'form-control' %>
             </div>
+            <div class="col-sm-1"></div>
+
           </div>
 
 
@@ -133,3 +166,4 @@
       </div>
     </div>
 <% end %>
+<div id="loadForm"></div>

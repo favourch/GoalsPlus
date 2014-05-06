@@ -1,4 +1,4 @@
-<%= form_for(@stadium) do |f| %>
+<%= form_for(@stadium, html: {role: 'form', class: 'form-horizontal'}) do |f| %>
     <% if @stadium.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@stadium.errors.count, "error") %> prohibited this stadium from being saved:</h2>
@@ -11,22 +11,44 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :name %>
-      <br>
-      <%= f.text_field :name %>
+    <div class="frontGame" style="display: box">
+      <div class="panel panel-default">
+        <div class="match_body">
+
+
+          <div class="form-group">
+            <%= f.label 'Stadium Name', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-6">
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group" data-action="cities">
+            <%= f.label 'City', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-6">
+              <%= f.collection_select :city_id, City.all, :id, :name, {prompt: true}, {class: 'form-control'} %>
+            </div>
+            <div class="col-sm-2">
+              <%= render '/layouts/formicons' %>
+            </div>
+            <div class="col-sm-12 load"></div>
+          </div>
+
+          <div class="form-group">
+            <%= f.label 'Capacity', class: 'col-sm-4 control-label' %>
+            <div class="col-sm-6">
+              <%= f.number_field :capacity, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-group submit">
+            <%= f.submit class: 'btn btn-success btn-large', value: 'Update' %>
+          </div>
+
+
+        </div>
+      </div>
     </div>
-    <div class="field">
-      <%= f.label :city %>
-      <br>
-      <%= f.number_field :city %>
-    </div>
-    <div class="field">
-      <%= f.label :capacity %>
-      <br>
-      <%= f.number_field :capacity %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+
+
 <% end %>

@@ -34,6 +34,69 @@ $(function () {
         alert();
     });
 
+
+    $('#loadForm').on('click', '.stageBtn', function () {
+
+        var $this = $(this),
+            $form = $this.parents('form'),
+            data = $form.serialize(),
+            sId = $this.parents('.popUp').data('id'),
+            url = $form.attr('action');
+
+        //console.log(url, data);
+        $.post(url, data, function () {
+
+            //console.log('Request has been sent.');
+
+        }).done(function (res, req) {
+            $('#' + sId + ' > option').removeAttr('selected');
+            $('#' + sId).append('<option value="' + res.id + '" selected>' + res.name + '</option>');
+
+            $this.parents('.popUp').remove();
+
+            console.log(res);
+        });
+
+    });
+
+
+    $('#matchSection').on('click', '.form-icon', function LoadForm() {
+
+        var $this = $(this),
+            $formGroup = $this.parents('.form-group'),
+            action = $formGroup.data('action'),
+            $select = $formGroup.find('select'),
+            sId = $select.attr('id'),
+            id = $select.val(),
+            $loadForm = $('#loadForm'),
+            $div,
+            path = '/' + action;
+
+        $div = '<div class="popUp" data-id="' + sId + '"></div>';
+
+        console.log(path, id);
+
+
+        if ($this.data('action') === 'collide') {
+            $this.parent().siblings('.load').html('');
+            $loadForm.html('');
+        }
+        else if ($this.data('action') === 'add') {
+
+            path += '/new';
+            $loadForm.prepend($div);
+            $('[data-id=' + sId + ']').load(path);
+        }
+        else if ($this.data('action') === 'edit') {
+            path += '/' + id + '/edit';
+            $loadForm.prepend($div);
+            $('[data-id=' + sId + ']').load(path);
+        }
+
+        $this.siblings('.form-icon').show();
+        $this.hide();
+
+    });
 });
 
 
@@ -92,4 +155,5 @@ function clickFunction() {
         //console.log('Finishing');
 
     });
+
 }

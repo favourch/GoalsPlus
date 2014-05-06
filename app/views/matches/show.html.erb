@@ -21,7 +21,7 @@
             <div class="match_body">
 
 
-            <% if can? :create, @match[:guesses] %>
+              <% if can? :create, @match[:guesses] %>
                   <% if @match[:danger] %>
                       <div class="msg alert-danger">There are <%= @match[:local_time] %> before the kick-off. Please
                         submit your scores soon.
@@ -50,7 +50,7 @@
                 <div class="team_a">
                   <div class="team_score"><%= @match[:goals_a] ? @match[:goals_a] : '?' %><%= '('+@match[:pens_a].to_s+')' if @match[:pens_a] %></div>
                 </div>
-                <div class="vs"><%= "(pens)" if @match[:goals_a] %></div>
+                <div class="vs"><%= "(pens)" if @match[:pens_a] %></div>
                 <div class="team_b">
                   <div class="team_score"><%= @match[:goals_b] ? @match[:goals_b] : '?' %><%= '('+@match[:pens_b].to_s+')' if @match[:pens_b] %></div>
                 </div>
@@ -72,7 +72,7 @@
               </div>
             </div>
             <div class="match_data">
-              <% if can? :create, @match[:guesses] %>
+              <% if can? :create, Guess %>
                   <div class="my_guess" data-match="<%= @match[:id] %>" style="display: box">
                     <% if @match[:past] %>
                     <% elsif @match[:my_guess].count == 0 %>
@@ -118,11 +118,11 @@
                                       </td>
                                   <% end %>
                                 </tr>
-                          <% end %>
+                            <% end %>
                           </table>
                       <% end %>
                     </div>
-              <% end %>
+                <% end %>
               </div>
               <%#= link_to 'Destroy', @match, method: :delete, data: { confirm: 'Are you sure?' } %>
               <div class="panel panel-default buttons">
@@ -144,7 +144,7 @@
 
                       <div class="col-md-3 column">
                         <%= link_to 'Destroy', @match, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger btn-large new' %>
-                  </div>
+                      </div>
                   <% end %>
 
                 </div>
