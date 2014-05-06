@@ -31,8 +31,8 @@ class StadiaController < ApplicationController
 
     respond_to do |format|
       if @stadium.save
-        format.html { redirect_to @stadium, notice: 'Stadium was successfully created.' }
         format.json { render action: 'show', status: :created, location: @stadium }
+        format.html { redirect_to @stadium, notice: 'Stadium was successfully created.' }
       else
         format.html { render action: 'new' }
         format.json { render json: @stadium.errors, status: :unprocessable_entity }
@@ -45,8 +45,8 @@ class StadiaController < ApplicationController
   def update
     respond_to do |format|
       if @stadium.update(stadium_params)
-        format.html { redirect_to @stadium, notice: 'Stadium was successfully updated.' }
         format.json { head :no_content }
+        format.html { redirect_to @stadium, notice: 'Stadium was successfully updated.' }
       else
         format.html { render action: 'edit' }
         format.json { render json: @stadium.errors, status: :unprocessable_entity }
@@ -72,6 +72,6 @@ class StadiaController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def stadium_params
-    params.require(:stadium).permit(:name, :city, :capacity)
+    params.require(:stadium).permit(:name, :capacity, city: [:id, :name])
   end
 end

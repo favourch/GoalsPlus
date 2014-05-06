@@ -30,11 +30,13 @@ class CitiesController < ApplicationController
 
     respond_to do |format|
       if @city.save
-        format.html { redirect_to @city, notice: 'City was successfully created.' }
         format.json { render action: 'show', status: :created, location: @city }
+
+        format.html { redirect_to @city, notice: 'City was successfully created.' }
       else
-        format.html { render action: 'new' }
         format.json { render json: @city.errors, status: :unprocessable_entity }
+
+        format.html { render action: 'new' }
       end
     end
   end
@@ -71,6 +73,8 @@ class CitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def city_params
-    params.require(:city).permit(:name, :timezone, :country)
+    params.require(:city).permit(:name, timezone: [:id, :name], country: [:id, :name])
+
+
   end
 end

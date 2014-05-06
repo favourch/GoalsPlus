@@ -35,13 +35,14 @@ $(function () {
     });
 
 
-    $('#loadForm').on('click', '.stageBtn', function () {
+    $('#loadForm').on('click', '.submitBtn', function () {
 
         var $this = $(this),
             $form = $this.parents('form'),
             data = $form.serialize(),
             sId = $this.parents('.popUp').data('id'),
-            url = $form.attr('action');
+            url = $form.attr('action'),
+            controller = $this.data('controller');
 
         //console.log(url, data);
         $.post(url, data, function () {
