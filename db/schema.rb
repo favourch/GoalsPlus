@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 20140417035309) do
   add_index "languages", ["name"], name: "index_languages_on_name", unique: true, using: :btree
 
   create_table "matches", force: true do |t|
-    t.integer "team_a_id", default: 1
-    t.integer "team_b_id", default: 1
+    t.integer "host_id", default: 1
+    t.integer "visitor_id", default: 1
     t.integer "stadium_id", default: 1
     t.integer "tournament_id", default: 31
     t.integer "stage_id", default: 1
@@ -92,8 +92,8 @@ ActiveRecord::Schema.define(version: 20140417035309) do
 
   add_index "matches", ["stadium_id"], name: "index_matches_on_stadium_id", using: :btree
   add_index "matches", ["stage_id"], name: "index_matches_on_stage_id", using: :btree
-  add_index "matches", ["team_a_id"], name: "index_matches_on_team_a_id", using: :btree
-  add_index "matches", ["team_b_id"], name: "index_matches_on_team_b_id", using: :btree
+  add_index "matches", ["host_id"], name: "index_matches_on_host_id", using: :btree
+  add_index "matches", ["visitor_id"], name: "index_matches_on_visitor_id", using: :btree
   add_index "matches", ["timezone_id"], name: "index_matches_on_timezone_id", using: :btree
   add_index "matches", ["tournament_id"], name: "index_matches_on_tournament_id", using: :btree
 

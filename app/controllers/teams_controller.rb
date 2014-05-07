@@ -17,16 +17,19 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = Team.new
+    @stadiums = Stadium.all.order("name ASC")
   end
 
   # GET /teams/1/edit
   def edit
+    @stadiums = Stadium.all.order("name ASC")
   end
 
   # POST /teams
   # POST /teams.json
   def create
     @team = Team.new(team_params)
+    @stadiums = Stadium.all.order("name ASC")
 
     respond_to do |format|
       if @team.save
@@ -71,6 +74,6 @@ class TeamsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def team_params
-    params.require(:team).permit(:name, :short, :national, :rating, stadium_id: [:id, :name])
+    params.require(:team).permit(:id, :name, :short, :national, :rating, :stadium_id, matches_attributes: [:id, :match_id, :name])
   end
 end

@@ -14,16 +14,16 @@
     <% end %>
 
     <div class="field">
-      <%= f.label :team_a %>
+      <%= f.label :host %>
       <br>
 
-      <%= f.collection_select :team_a_id, @teams, :id, :name, prompt: true %>
+      <%= f.collection_select :host_id, @teams, :id, :name, prompt: true %>
 
     </div>
     <div class="field">
-      <%= f.label :team_b %>
+      <%= f.label :visitor %>
       <br>
-      <%= f.collection_select :team_b_id, @teams, :id, :name, prompt: true %>
+      <%= f.collection_select :visitor_id, @teams, :id, :name, prompt: true %>
     </div>
     <div class="field">
       <%= f.label :stadium %>

@@ -737,10 +737,10 @@ INSERT INTO `tournaments`
 
 
 
-#rails generate scaffold Matches team_a:integer team_b:integer stadium:integer tournament:integer stage:integer date:datetime timezone:integer pens:boolean goals_a:integer goals_b:integer pens_a:integer pens_b:integer coof_a:decimal coof_x:decimal coof_b:decimal --no-stylesheets
+#rails generate scaffold Matches host:integer visitor:integer stadium:integer tournament:integer stage:integer date:datetime timezone:integer pens:boolean goals_a:integer goals_b:integer pens_a:integer pens_b:integer coof_a:decimal coof_x:decimal coof_b:decimal --no-stylesheets
 
 INSERT INTO `matches`
-(`id`, `team_a_id`, `team_b_id`, `stadium_id`, `tournament_id`, `stage_id`,         `date`,         `timezone_id`,  `pens`,  `goals_a`,  `goals_b`,  `pens_a`,  `pens_b`, `coof_a`, `coof_x`, `coof_b`,    `created_at`,     `updated_at`)
+(`id`, `host_id`, `visitor_id`, `stadium_id`, `tournament_id`, `stage_id`,         `date`,         `timezone_id`,  `pens`,  `goals_a`,  `goals_b`,  `pens_a`,  `pens_b`, `coof_a`, `coof_x`, `coof_b`,    `created_at`,     `updated_at`)
 VALUES
 (1,         8,          13,           5,             1,              2,       '2014-06-12 17:00',         28,         0,        NULL,      NULL,       NULL,      NULL,     NULL,     NULL,     NULL,  '2014-04-01 00:00', '2014-04-01 00:00'),
 (2,        26,           9,          12,             1,              2,       '2014-06-13 13:00',         28,         0,        NULL,      NULL,       NULL,      NULL,     NULL,     NULL,     NULL,  '2014-04-01 00:00', '2014-04-01 00:00'),

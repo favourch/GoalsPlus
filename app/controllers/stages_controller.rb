@@ -30,8 +30,8 @@ class StagesController < ApplicationController
 
     respond_to do |format|
       if @stage.save
-        format.html { redirect_to @stage, notice: 'Stage was successfully created.' }
         format.json { render action: 'show', status: :created, location: @stage }
+        format.html { redirect_to @stage, notice: 'Stage was successfully created.' }
       else
         format.json { render json: @stage.errors, status: :unprocessable_entity }
         format.html { render action: 'new' }
@@ -44,8 +44,8 @@ class StagesController < ApplicationController
   def update
     respond_to do |format|
       if @stage.update(stage_params)
-        format.html { redirect_to @stage, notice: 'Stage was successfully updated.' }
         format.json { head :no_content }
+        format.html { redirect_to @stage, notice: 'Stage was successfully updated.' }
       else
         format.json { render json: @stage.errors, status: :unprocessable_entity }
         format.html { render action: 'edit' }
@@ -71,6 +71,6 @@ class StagesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def stage_params
-    params.require(:stage).permit(:name)
+    params.require(:stage).permit(:id, :name, matches_attributes: [:id, :match_id, :name])
   end
 end

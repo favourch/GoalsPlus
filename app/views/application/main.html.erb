@@ -19,9 +19,13 @@
           <h2>Latest News</h2>
 
           <p><span>[2nd May] </span>The website is using new interface.</p>
+
           <p><span>[1st May] </span>John has joined our tournament</p>
+
           <p><span>[30th Apr] </span>Mike has scored 3 points in 4 games in a row!</p>
+
           <p><span>[29th Apr] </span>Server will be down for a maintanance next week.</p>
+
           <p><span>[29th May] </span>New matches have been added</p>
 
           <% if can? :create, Guess %>
@@ -41,22 +45,22 @@
             <div class="panel-heading gameTitle">Last Game</div>
             <div class="match_body">
               <div class="teams">
-                <div class="team_a">
+                <div class="host">
                   <div class="team_name short"><%= @lastMatch[:short_a] %></div>
-                  <div class="team_name long"><%= @lastMatch[:team_a] %></div>
+                  <div class="team_name long"><%= @lastMatch[:host] %></div>
                 </div>
                 <div class="vs">vs.</div>
-                <div class="team_b">
+                <div class="visitor">
                   <div class="team_name short"><%= @lastMatch[:short_b] %></div>
-                  <div class="team_name long"><%= @lastMatch[:team_b] %></div>
+                  <div class="team_name long"><%= @lastMatch[:visitor] %></div>
                 </div>
               </div>
               <div class="scores">
-                <div class="team_a">
+                <div class="host">
                   <div class="team_score"><%= @lastMatch[:score_a] %></div>
                 </div>
                 <div class="vs"><%= @lastMatch[:pens] %></div>
-                <div class="team_b">
+                <div class="visitor">
                   <div class="team_score"><%= @lastMatch[:score_b] %></div>
                 </div>
               </div>
@@ -92,22 +96,22 @@
             <div class="panel-heading gameTitle">Next Game</div>
             <div class="match_body">
               <div class="teams">
-                <div class="team_a">
+                <div class="host">
                   <div class="team_name short"><%= @nextMatch[:short_a] %></div>
-                  <div class="team_name long"><%= @nextMatch[:team_a] %></div>
+                  <div class="team_name long"><%= @nextMatch[:host] %></div>
                 </div>
                 <div class="vs">vs.</div>
-                <div class="team_b">
+                <div class="visitor">
                   <div class="team_name short"><%= @nextMatch[:short_b] %></div>
-                  <div class="team_name long"><%= @nextMatch[:team_b] %></div>
+                  <div class="team_name long"><%= @nextMatch[:visitor] %></div>
                 </div>
               </div>
               <div class="scores">
-                <div class="team_a">
+                <div class="host">
                   <div class="team_score"><%= @nextMatch[:score_a] ? @nextMatch[:score_a] : '?' %></div>
                 </div>
                 <div class="vs"><%= @lastMatch[:pens] %></div>
-                <div class="team_b">
+                <div class="visitor">
                   <div class="team_score"><%= @nextMatch[:score_b] ? @nextMatch[:score_b] : '?' %></div>
                 </div>
               </div>
@@ -170,11 +174,11 @@
               </tbody>
               <% if can? :create, Guess %>
 
-              <thead>
-              <tr>
-                <td colspan="4"><a class="btn" href="#">View details »</a></td>
-              </tr>
-              </thead>
+                  <thead>
+                  <tr>
+                    <td colspan="4"><a class="btn" href="#">View details »</a></td>
+                  </tr>
+                  </thead>
               <% end %>
             </table>
           </div>
@@ -204,9 +208,9 @@
                 </td>
               </tr>
               <% if can? :create, Guess %>
-              <tr>
-                <td colspan="4"><a class="btn" href="#">View details »</a></td>
-              </tr>
+                  <tr>
+                    <td colspan="4"><a class="btn" href="#">View details »</a></td>
+                  </tr>
               <% end %>
 
               </tbody>

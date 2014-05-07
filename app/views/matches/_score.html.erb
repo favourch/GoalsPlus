@@ -17,27 +17,27 @@
         <div class="match_body">
 
           <div class="teams">
-            <div class="team_a">
-              <div class="team_name short"><%= @match.team_a.short %></div>
-              <div class="team_name long"><%= @match.team_a.name %></div>
+            <div class="host">
+              <div class="team_name short"><%= @match.host.short %></div>
+              <div class="team_name long"><%= @match.host.name %></div>
             </div>
             <div class="vs">vs.</div>
-            <div class="team_b">
-              <div class="team_name short"><%= @match.team_b.short %></div>
-              <div class="team_name long"><%= @match.team_b.name %></div>
+            <div class="visitor">
+              <div class="team_name short"><%= @match.visitor.short %></div>
+              <div class="team_name long"><%= @match.visitor.name %></div>
             </div>
           </div>
 
 
           <div class="scores">
-            <div class="team_a">
+            <div class="host">
               <div class="">
                 <%= f.number_field :goals_a, value: @match.goals_a, class: 'goals_form' %>
                 <%= f.number_field :pens_a, value: @match.pens_a, class: 'goals_form' if @match.pens %>
               </div>
             </div>
             <div class="vs"><%= "(pens)" if @match.pens %></div>
-            <div class="team_b">
+            <div class="visitor">
               <div class="">
                 <%= f.number_field :goals_b, value: @match.goals_b, class: 'goals_form' %>
                 <%= f.number_field :pens_b, value: @match.pens_b, class: 'goals_form' if @match.pens %>

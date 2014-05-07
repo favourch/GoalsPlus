@@ -3,4 +3,6 @@ class Team < ActiveRecord::Base
   has_many :matches
   has_one :setting
 
+  accepts_nested_attributes_for :matches, :setting
+
 end

@@ -32,7 +32,7 @@
           <div class="form-group" data-action="stadia">
             <%= f.label 'Stadium', class: 'col-sm-4 control-label' %>
             <div class="col-sm-6">
-              <%= f.collection_select :stadium_id, Stadium.all, :id, :name, {prompt: true}, {class: 'form-control'} %>
+              <%= f.collection_select :stadium_id, @stadiums, :id, :name, {prompt: true}, {class: 'form-control'} %>
             </div>
             <div class="col-sm-2">
               <%= render '/layouts/formicons' %>

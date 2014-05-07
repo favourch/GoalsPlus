@@ -35,7 +35,7 @@ $(function () {
     });
 
 
-    $('#loadForm').on('click', '.submitBtn', function () {
+    $('#loadForm, #new_match').on('click', '.submitBtn', function () {
 
         var $this = $(this),
             $form = $this.parents('form'),
@@ -55,7 +55,9 @@ $(function () {
 
             $this.parents('.popUp').remove();
 
-            console.log(res);
+            console.log('res: ', res);
+            console.log('req: ', req);
+
         });
 
     });

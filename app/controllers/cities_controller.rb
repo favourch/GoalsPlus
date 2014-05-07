@@ -73,7 +73,7 @@ class CitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def city_params
-    params.require(:city).permit(:name, timezone: [:id, :name], country: [:id, :name])
+    params.require(:city).permit(:id, :name, :timezone_id, :country_id, stadia_attributes: [:id, :stadium_id, :name])
 
 
   end

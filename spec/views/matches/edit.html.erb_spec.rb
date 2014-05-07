@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "matches/edit" do
   before(:each) do
     @match = assign(:match, stub_model(Match,
-                                       :team_a => 1,
-                                       :team_b => 1,
+                                       :host => 1,
+                                       :visitor => 1,
                                        :stadium => 1,
                                        :tournament => 1,
                                        :stage => 1,
@@ -25,8 +25,8 @@ describe "matches/edit" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", match_path(@match), "post" do
-      assert_select "input#match_team_a[name=?]", "match[team_a]"
-      assert_select "input#match_team_b[name=?]", "match[team_b]"
+      assert_select "input#match_host[name=?]", "match[host]"
+      assert_select "input#match_visitor[name=?]", "match[visitor]"
       assert_select "input#match_stadium[name=?]", "match[stadium]"
       assert_select "input#match_tournament[name=?]", "match[tournament]"
       assert_select "input#match_stage[name=?]", "match[stage]"

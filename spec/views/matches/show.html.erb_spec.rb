@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "matches/show" do
   before(:each) do
     @match = assign(:match, stub_model(Match,
-                                       :team_a => 1,
-                                       :team_b => 2,
+                                       :host => 1,
+                                       :visitor => 2,
                                        :stadium => 3,
                                        :tournament => 4,
                                        :stage => 5,

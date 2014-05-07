@@ -80,8 +80,8 @@ class MatchesController < ApplicationController
 
       all_matches.push({
                            id: match.id,
-                           team_a: match.team_a.name,
-                           team_b: match.team_b.name,
+                           host: match.host.name,
+                           visitor: match.visitor.name,
                            stadium: match.stadium.name,
                            city: match.stadium.city.name,
                            country: match.stadium.city.country.code,
@@ -166,10 +166,10 @@ class MatchesController < ApplicationController
     @match = Array.new
     @match = {
         id: match.id,
-        team_a: match.team_a.name,
-        team_b: match.team_b.name,
-        team_a_short: match.team_a.short,
-        team_b_short: match.team_b.short,
+        host: match.host.name,
+        visitor: match.visitor.name,
+        host_short: match.host.short,
+        visitor_short: match.visitor.short,
         stadium: match.stadium.name,
         city: match.stadium.city.name,
         country: match.stadium.city.country.code,
@@ -230,6 +230,9 @@ class MatchesController < ApplicationController
   # POST /matches
   # POST /matches.json
   def create
+
+    puts YAML::dump(match_params)
+
     @match = Match.new(match_params)
 
     respond_to do |format|
@@ -346,11 +349,10 @@ class MatchesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def match_params
-    params.require(:match).permit(:date, :pens, :goals_a, :goals_b, :pens_a, :pens_b, :coof_a, :coof_x, :coof_b, team_a_id: [:id, :name], team_b_id: [:id, :name], stadium_id: [:id, :name], tournament_id: [:id, :name], stage_id: [:id, :name], timezone_id: [:id, :name])
-
-
+    params.require(:match).permit(:date, :pens, :goals_a, :goals_b, :pens_a, :pens_b, :coof_a, :coof_x, :coof_b, :host_id, :visitor_id, :stadium_id, :tournament_id, :stage_id, :timezone_id)
   end
 
   public
   attr_accessor :count
 end
+

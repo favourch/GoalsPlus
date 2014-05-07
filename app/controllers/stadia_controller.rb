@@ -18,10 +18,13 @@ class StadiaController < ApplicationController
   # GET /stadia/new
   def new
     @stadium = Stadium.new
+    @cities = City.all.order("name ASC")
+
   end
 
   # GET /stadia/1/edit
   def edit
+    @cities = City.all.order("name ASC")
   end
 
   # POST /stadia
@@ -72,6 +75,6 @@ class StadiaController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def stadium_params
-    params.require(:stadium).permit(:name, :capacity, city: [:id, :name])
+    params.require(:stadium).permit(:id, :name, :capacity, :city_id, matches_attributes: [:id, :match_id, :name], teams_attributes: [:id, :team_id, :name])
   end
 end
