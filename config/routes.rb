@@ -39,6 +39,8 @@ Soccer::Application.routes.draw do
   get 'guesses/:id/edit/:match_id/:pens' => 'guesses#edit'
   get 'matches/:id/score' => 'matches#score'
 
+  get 'settings/activate' => 'settings#activate'
+
   #get 'settings/edit' => 'matches#score'
 
 

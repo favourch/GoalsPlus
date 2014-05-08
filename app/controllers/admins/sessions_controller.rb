@@ -6,9 +6,9 @@ class Admins::SessionsController < Devise::SessionsController
     end
 
 
-    @new_users = User.joins(:setting).where(settings: {role_id: 3})
+    @new_users = User.joins(:setting).where(settings: {role_id: 3}).order('id ASC')
+    @old_users = User.joins(:setting).where.not(settings: {role_id: 3}).order('id ASC')
 
-    puts @new_users
 
   end
 end

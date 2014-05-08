@@ -235,6 +235,9 @@ class MatchesController < ApplicationController
 
     @match = Match.new(match_params)
 
+    puts YAML::dump(@match)
+
+
     respond_to do |format|
       if @match.save
         format.html { redirect_to @match, notice: 'Match was successfully created.' }

@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS pavelws_soccerdev DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-CREATE USER 'pavelws_railman'@'localhost' IDENTIFIED BY 'doubleIPA';
+CREATE USER 'railman'@'localhost' IDENTIFIED BY 'doubleIPA';
 GRANT ALL PRIVILEGES ON pavelws_soccerdev.* TO 'pavelws_railman'@'localhost';
 FLUSH PRIVILEGES;
 

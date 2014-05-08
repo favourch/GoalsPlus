@@ -1,9 +1,95 @@
-<h1>ADMIN!!!</h1>
+<section class="alt extra-space top" style="background-color:rgba(0, 44, 22, 0.80);">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+        <div class="jumbotron">
+          <h2>Admin Panel:</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<% @new_users.each do |new_user| %>
+<section id="matchSection" class="alt extra-space">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-1 column">
+      </div>
+      <div class="col-md-10 column">
 
-    <pre>
-  <%= YAML::dump(new_user) %>
-</pre>
 
-<% end %>
+        <div class="panel panel-default">
+          <div class="panel-heading gameTitle">New Users</div>
+          <table class="table standings">
+            <thead>
+            <tr>
+              <th class="uNum">#</th>
+              <th class="uUser">User</th>
+              <th class="uEmail">Email</th>
+              <th class="uNick">Phone</th>
+              <th class="uRole">Role</th>
+              <th class="uConfirmed">Confirmed</th>
+              <th class="uAprove">Approve</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <% @new_users.each do |user| %>
+                <tr>
+                  <td class="uNum"><%= user.id %></td>
+                  <td class="uUser"><%= user.user_name %> (<%= user.setting.screen_name %>)</td>
+                  <td class="uEmail"><%= user.email %></td>
+                  <td class="uNick"><%= user.setting.cell_phone %></td>
+                  <td class="uRole"><%= user.setting.role.name %></td>
+                  <td class="uConfirmed"><%= user.confirmed_at ? 'Yes' : 'No' %></td>
+                  <td class="uRole">
+                    <%= form_for(user.setting) do |f| %>
+                        <%= f.hidden_field :role, :as => :hidden, :input_html => {:value => 2} %>
+                        <div class="btn btn-success btn-xs approveBtn" data-uid="<%= user.id %>" data-sid="<%= user.setting_id %>">Approve</div>
+                    <% end %>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading gameTitle">Current Users</div>
+          <table class="table standings">
+            <thead>
+            <tr>
+              <th class="uNum">#</th>
+              <th class="uUser">User</th>
+              <th class="uEmail">Email</th>
+              <th class="uNick">Phone</th>
+              <th class="uRole">Role</th>
+              <th class="uConfirmed">Confirmed</th>
+              <th class="uAprove">Approve</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <% @old_users.each do |user| %>
+                <tr>
+                  <td class="uNum"><%= user.id %></td>
+                  <td class="uUser"><%= user.user_name %> (<%= user.setting.screen_name %>)</td>
+                  <td class="uEmail"><%= user.email %></td>
+                  <td class="uNick"><%= user.setting.cell_phone %></td>
+                  <td class="uRole"><%= user.setting.role.name %></td>
+                  <td class="uConfirmed"><%= user.confirmed_at ? 'Yes' : 'No' %></td>
+                  <td class="uRole"></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+
+
+        <br/>
+      </div>
+      <div class="col-md-1 column">
+      </div>
+    </div>
+  </div>
+</section>

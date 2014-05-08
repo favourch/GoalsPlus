@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  before_action :set_setting, only: [:show, :edit, :update, :destroy]
+  before_action :set_setting, only: [:show, :edit, :update, :activate, :destroy]
 
   # GET /Setting
   # GET /Setting.json
@@ -37,18 +37,33 @@ class SettingsController < ApplicationController
     end
   end
 
+
+  def activate
+
+
+    puts '-----------'
+    puts YAML::dump(settings_params)
+    #Guess.find(guess.id).update_attribute(:points, points)
+
+
+  end
+
   # PATCH/PUT /stadia/1
   # PATCH/PUT /stadia/1.json
   def update
-    respond_to do |format|
-      if @setting.update(setting_params)
-        format.html { redirect_to @setting, notice: 'Settings were successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @setting.errors, status: :unprocessable_entity }
-      end
-    end
+    puts '-----------'
+    puts YAML::dump(setting_params)
+
+    #respond_to do |format|
+    #  if @setting.update(setting_params)
+    #    format.json { head :no_content }
+    #    format.html { redirect_to @setting, notice: 'Settings were successfully updated.' }
+    #  else
+    #    format.json { render json: @setting.errors, status: :unprocessable_entity }
+    #
+    #    format.html { render action: 'edit' }
+    #  end
+    #end
   end
 
   # DELETE /stadia/1
@@ -69,6 +84,6 @@ class SettingsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def stadium_params
-    params.require(:settings).permit(:screen_name, :cell_phone, :role, :timezone, :beer, :language)
+    params.require(:settings).permit(:screen_name, :cell_phone, :role, :timezone, :beer, :language, users_params: [:id, :user_name])
   end
 end

@@ -94,6 +94,6 @@ Soccer::Application.configure do
       #:openssl_verify_mode  => 'none'
 
   }
-  config.action_mailer.default_url_options = {:host => 'pavel.ws'}
+  config.action_mailer.default_url_options = {:host => '107.170.223.224'}
 
 end

@@ -44,7 +44,7 @@ $(function () {
             url = $form.attr('action'),
             controller = $this.data('controller');
 
-        //console.log(url, data);
+        console.log(url, data);
         $.post(url, data, function () {
 
             //console.log('Request has been sent.');
@@ -54,12 +54,7 @@ $(function () {
             $('#' + sId).append('<option value="' + res.id + '" selected>' + res.name + '</option>');
 
             $this.parents('.popUp').remove();
-
-            console.log('res: ', res);
-            console.log('req: ', req);
-
         });
-
     });
 
 
@@ -76,9 +71,6 @@ $(function () {
             path = '/' + action;
 
         $div = '<div class="popUp" data-id="' + sId + '"></div>';
-
-        console.log(path, id);
-
 
         if ($this.data('action') === 'collide') {
             $this.parent().siblings('.load').html('');
@@ -99,6 +91,44 @@ $(function () {
         $this.siblings('.form-icon').show();
         $this.hide();
 
+    });
+
+
+    $('.approveBtn').on('click', function ApproveUser() {
+
+        var $this = $(this),
+            uid = $this.data('uid'),
+            sid = $this.data('sid'),
+
+            $form = $this.parent('form'),
+            data = $form.serialize(),
+            url = $form.attr('action'),
+            controller = $this.data('controller');
+
+        console.log(url, data);
+
+
+        // /cities utf8=%E2%9C%93&authenticity_token=xjypsCFu%2FdZ5tqZiopzA3pcecg1XpZzaHNZmg0Sr4Gs%3D&city%5Bname%5D=Cardiff&city%5Btimezone_id%5D=39&city%5Bcountry_id%5D=218
+
+
+        //console.log(url, data);
+        $.post(url, data, function () {
+
+            //console.log('Request has been sent.');
+
+        }).done(function (res, req) {
+            //    $('#' + sId + ' > option').removeAttr('selected');
+            //     $('#' + sId).append('<option value="' + res.id + '" selected>' + res.name + '</option>');
+
+            //    $this.parents('.popUp').remove();
+
+            console.log('res: ', res);
+            console.log('req: ', req);
+
+        }).fail(function (res, req) {
+            console.log('res: ', res);
+            console.log('req: ', req);
+        });
     });
 });
 
