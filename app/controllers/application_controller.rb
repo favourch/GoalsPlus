@@ -38,8 +38,13 @@ class ApplicationController < ActionController::Base
         score_b: (m.goals_b ? m.goals_b.to_s : '?') + (m.pens_b ? '(' + m.pens_b.to_s + ')' : '')
     }
 
-    m = Match.where("date < :date", {date: today}).order("date DESC").first
-    @lastMatch = {
+    m = Match.where("date < :date", {date: 1.month.ago.to_s(:db)}).order("date DESC").first
+
+    puts '-M : ' + m.to_s
+    if m == nil or m == ''
+      @lastMatch = @nextMatch
+    else
+      @lastMatch = {
         id: m.id,
         host: m.host.name,
         visitor: m.visitor.name,
@@ -52,7 +57,8 @@ class ApplicationController < ActionController::Base
         pens: (m.pens_a and m.pens_b) ? '(pens)' : '',
         score_a: (m.goals_a ? m.goals_a.to_s : '?') + (m.pens_a ? '(' + m.pens_a.to_s + ')' : ''),
         score_b: (m.goals_b ? m.goals_b.to_s : '?') + (m.pens_b ? '(' + m.pens_b.to_s + ')' : '')
-    }
+      }
+    end
 
     points = User.joins("LEFT JOIN (SELECT  `guesses`.`user_id` as `user_id` , `guesses`.`points` as `points`, `matches`.`date` as `date` FROM `matches`, `guesses` WHERE `guesses`.`match_id` = `matches`.`id` AND `matches`.`date` < '#{today}') as `g` ON users.id = g.user_id")
     .select('users.*, count(g.user_id) as games, sum(g.points) as points')

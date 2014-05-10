@@ -234,7 +234,7 @@ class MatchesController < ApplicationController
 
     #puts YAML::dump(match_params)
 
-    #@match = Match.new(match_params)
+    @match = Match.new(match_params)
 
     #puts YAML::dump(@match)
 
