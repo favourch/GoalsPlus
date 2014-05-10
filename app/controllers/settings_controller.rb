@@ -53,7 +53,7 @@ class SettingsController < ApplicationController
   # PATCH/PUT /stadia/1.json
   def update
 
-    puts YAML::dump(setting_params[:screen_name])
+    #puts YAML::dump(setting_params[:screen_name])
     respond_to do |format|
       if @setting.update(setting_params)
         if setting_params[:role_id]

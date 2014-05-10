@@ -105,25 +105,17 @@ $(function () {
             url = $form.attr('action'),
             controller = $this.data('controller');
 
-        console.log('url: ', url);
-        console.log('data: ', data);
-
-
-        //console.log(url, data);
         $.post(url, data, function () {
 
-            //console.log('Request has been sent.');
 
         }).done(function (res, req) {
 
             $this.removeClass('approveBtn btn-success')
                 .addClass('btn-info')
-                .text(req.toUpperCase() + '!')
+                .text('DONE!')
                 .css('cursor', 'auto');
 
         }).fail(function (res, req) {
-
-            console.log(res, req);
 
             $this.removeClass('approveBtn btn-success')
                 .addClass('btn-danger')
@@ -151,18 +143,7 @@ function clickFunction() {
 
     $.post(url, data, function () {
 
-        //console.log('Request has been sent.');
-
     }).done(function (res) {
-
-
-        // New
-        // <form accept-charset="UTF-8" action="/guesses" class="guess_form" id="guess_match_66" method="post" name="match_66">
-        // <div class="button new">Submit</div>
-
-        // Edited
-        // <form accept-charset="UTF-8" action="/guesses/33" class="guess_form" id="guess_match_65" method="post" name="match_65">
-        // <div class="button edit" onclick="clickFunction()">Edit</div>
 
         matchId = res.match.id;
         userId = res.user.id;
@@ -179,15 +160,8 @@ function clickFunction() {
 
 
     }).fail(function () {
-
-        //console.log('Request Failed ');
         $myGuess.parent('.match_info').siblings('.match_msg').addClass('error').html('There\'s been an error.');
-        //console.log($myGuess);
-
-
     }).always(function () {
-
-        //console.log('Finishing');
 
     });
 

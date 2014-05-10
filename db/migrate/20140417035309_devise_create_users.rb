@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :remember_created_at
 
       ## Trackable
-      t.integer :sign_in_count, default: 0, null: false
+      t.integer :sign_in_count, null: false, default: 0
       t.datetime :current_sign_in_at
       t.datetime :last_sign_in_at
       t.string :current_sign_in_ip
@@ -50,7 +50,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:settings) do |t|
       t.string :screen_name, default: '', null: false
       t.string :cell_phone, default: nil
-      t.references :role, default: 1, null: false
+      t.references :role, default: 3, null: false
       t.references :timezone, default: 6
       t.references :team, default: 1
       t.string :beer, default: "Beer"
