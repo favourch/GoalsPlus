@@ -64,6 +64,7 @@ class MatchesController < ApplicationController
 
       guesses = Array.new
 
+
       Guess.where(match_id: match.id).each do |guess|
 
         guesses.push({

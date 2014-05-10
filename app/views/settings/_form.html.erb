@@ -1,4 +1,4 @@
-<%= form_for(@setting) do |f| %>
+<%= form_for(@setting, html: {role: 'form'}) do |f| %>
     <% if @setting.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@setting.errors.count, "error") %> prohibited this stadium from being saved:</h2>
@@ -12,41 +12,32 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label :screen_name %>
+      <%= f.label 'Nick, screen or display name:' %>
       <br>
-      <%= f.text_field :screen_name, class: 'form-control input-lg' %>
+      <%= f.text_field :screen_name, class: 'form-control input-lg', value: current_user.user_name.capitalize, placeholder: current_user.user_name.capitalize %>
     </div>
     <div class="form-group">
-      <%= f.label :cell_phone %>
+      <%= f.label 'Your Cellphone' %>
       <br>
-      <%= f.number_field :cell_phone, class: 'form-control input-lg' %>
+      <%= f.number_field :cell_phone, class: 'form-control input-lg', value: current_user.setting.cell_phone, placeholder: '555-555-5555' %>
     </div>
     <div class="form-group">
-      <%= f.label :role %>
+      <%= f.label 'Your Timezone' %>
       <br>
-      <%= f.number_field :role, class: 'form-control input-lg' %>
+      <%= f.collection_select :timezone_id, Timezone.all, :id, :name, {prompt: true}, {class: 'form-control input-lg'} %>
     </div>
     <div class="form-group">
-      <%= f.label :role %>
+      <%= f.label 'Favorite Beer' %>
       <br>
-      <%= f.number_field :role, class: 'form-control input-lg' %>
+      <%= f.text_field :beer, class: 'form-control input-lg', value: current_user.setting.beer, placeholder: 'BudLight or Coors Light' %>
     </div>
     <div class="form-group">
-      <%= f.label :timezone %>
+      <%= f.label 'Preferred Languages:' %>
       <br>
-      <%= f.number_field :timezone, class: 'form-control input-lg' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :beer %>
-      <br>
-      <%= f.number_field :beer, class: 'form-control input-lg' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :language %>
-      <br>
-      <%= f.number_field :language, class: 'form-control input-lg' %>
+      <%= f.collection_select :language_id, Language.all, :id, :name, {prompt: true}, {class: 'form-control input-lg'} %>
+
     </div>
     <div class="form-group submit">
-      <%= f.submit class: 'edit btn btn-primary btn-large' %>
+      <%= f.submit class: 'edit btn btn-primary btn-large', value: 'Submit' %>
     </div>
 <% end %>

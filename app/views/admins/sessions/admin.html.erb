@@ -43,9 +43,11 @@
                   <td class="uRole"><%= user.setting.role.name %></td>
                   <td class="uConfirmed"><%= user.confirmed_at ? 'Yes' : 'No' %></td>
                   <td class="uRole">
-                    <%= form_for(user.setting) do |f| %>
-                        <%= f.hidden_field :role, :as => :hidden, :input_html => {:value => 2} %>
+                    <% if user.setting_id != 1 %>
+                        <%= form_for(user.setting) do |f| %>
+                            <%= f.hidden_field :role_id, value: 2 %>
                         <div class="btn btn-success btn-xs approveBtn" data-uid="<%= user.id %>" data-sid="<%= user.setting_id %>">Approve</div>
+                        <% end %>
                     <% end %>
                   </td>
                 </tr>

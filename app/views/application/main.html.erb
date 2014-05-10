@@ -7,8 +7,12 @@
           <div class="msg alert-success"><%= notice %></div>
 
           <% if current_user.setting_id == 1 %>
-              <div class='msg alert-warning'>Please update your settings. It is really important.</div>
-          <% end %>
+              <div class='popUp profile'>
+                <div class='msg'>
+                  <div>Before you proceed, you have to update your settings.
+                  </div><%= link_to('Update Settings', '/settings/new') %></div>
+              </div>
+        <% end %>
 
           <% if current_user.setting.role_id == 3 %>
               <div class='msg alert-warning'>A message has been sent to an administrator. You will be activated soon.

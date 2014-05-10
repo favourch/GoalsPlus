@@ -105,10 +105,8 @@ $(function () {
             url = $form.attr('action'),
             controller = $this.data('controller');
 
-        console.log(url, data);
-
-
-        // /cities utf8=%E2%9C%93&authenticity_token=xjypsCFu%2FdZ5tqZiopzA3pcecg1XpZzaHNZmg0Sr4Gs%3D&city%5Bname%5D=Cardiff&city%5Btimezone_id%5D=39&city%5Bcountry_id%5D=218
+        console.log('url: ', url);
+        console.log('data: ', data);
 
 
         //console.log(url, data);
@@ -117,17 +115,21 @@ $(function () {
             //console.log('Request has been sent.');
 
         }).done(function (res, req) {
-            //    $('#' + sId + ' > option').removeAttr('selected');
-            //     $('#' + sId).append('<option value="' + res.id + '" selected>' + res.name + '</option>');
 
-            //    $this.parents('.popUp').remove();
-
-            console.log('res: ', res);
-            console.log('req: ', req);
+            $this.removeClass('approveBtn btn-success')
+                .addClass('btn-info')
+                .text(req.toUpperCase() + '!')
+                .css('cursor', 'auto');
 
         }).fail(function (res, req) {
-            console.log('res: ', res);
-            console.log('req: ', req);
+
+            console.log(res, req);
+
+            $this.removeClass('approveBtn btn-success')
+                .addClass('btn-danger')
+                .text(req.toUpperCase() + ' ' + res.status)
+                .css('cursor', 'auto');
+
         });
     });
 });

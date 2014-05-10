@@ -69,6 +69,6 @@ class TimezonesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def timezone_params
-    params.require(:timezone).permit(:id, :name, :tzinfo, :utc, matches_attributes: [:id, :match_id, :name], cities_attributes: [:id, :city_id, :name])
+    params.require(:timezone).permit(:id, :name, :tzinfo, :utc, settings_attributes: [:id, :setting_id, :screen_name], matches_attributes: [:id, :match_id, :name], cities_attributes: [:id, :city_id, :name])
   end
 end

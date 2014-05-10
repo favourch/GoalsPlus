@@ -1,3 +1,5 @@
 class Role < ActiveRecord::Base
-  belongs_to :setting
+  has_many :setting
+
+  accepts_nested_attributes_for :setting
 end
