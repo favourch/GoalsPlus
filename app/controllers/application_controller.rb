@@ -38,9 +38,8 @@ class ApplicationController < ActionController::Base
         score_b: (m.goals_b ? m.goals_b.to_s : '?') + (m.pens_b ? '(' + m.pens_b.to_s + ')' : '')
     }
 
-    m = Match.where("date < :date", {date: 1.month.ago.to_s(:db)}).order("date DESC").first
+    m = Match.where("date < :date", {date: today}).order("date DESC").first
 
-    puts '-M : ' + m.to_s
     if m == nil or m == ''
       @lastMatch = @nextMatch
     else
@@ -83,6 +82,54 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def standings
+
+    today = Time.current().to_s(:db)
+
+
+    points = User.joins("LEFT JOIN (SELECT  `guesses`.`user_id` AS `user_id` , `guesses`.`points` AS `points`, `matches`.`date` AS `date` FROM `matches`, `guesses` WHERE `guesses`.`match_id` = `matches`.`id` AND `matches`.`date` < '#{today}') as `g` ON users.id = g.user_id")
+    .select('users.*, COUNT(g.user_id) AS games, SUM(if(g.points = 3, 1, 0)) AS wins, SUM(if(g.points = 1, 1, 0)) AS draws, SUM(if(g.points = 0, 1, 0)) AS losses, SUM(g.points) AS points')
+    .group('users.id')
+    .order("points DESC, games ASC, wins DESC");
+
+    n = 0
+    @standings = Array.new
+    points.each do |p|
+      n += 1
+      @standings.push({
+                          id: n,
+                          user: p.setting.screen_name,
+                          games: p.games,
+                          wins: p.wins,
+                          draws: p.draws,
+                          losses: p.losses,
+                          points: p.points
+                      })
+    end
+
+
+    points = User.select('settings.screen_name, GROUP_CONCAT(points ORDER BY matches.date DESC SEPARATOR " ") form')
+    .from('guesses, users, settings, matches')
+    .where("guesses.user_id = users.id AND users.setting_id = settings.id AND matches.id = guesses.match_id AND matches.date < '#{today}'")
+    .group('user_id')
+
+
+    n = 0
+    @last_form = Array.new
+    points.each do |p|
+      n += 1
+
+      form = p.form.gsub('3', 'W').gsub('1', 'D').gsub('0', 'L').split(' ').first(5)
+
+      @last_form.push({
+                          id: n,
+                          user: p.screen_name,
+                          form: form
+                      })
+    end
+
+  end
+
   protected
   def layout_by_resource
     if devise_controller?
@@ -93,3 +140,7 @@ class ApplicationController < ActionController::Base
   end
 
 end
+
+
+
+

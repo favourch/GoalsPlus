@@ -1,11 +1,10 @@
 <h3>Submit your scores</h3>
 
-
-
-
-
-
-
+<%
+   guess = @guess if @guess
+   match_id = @match_id if @match_id
+   pens = @pens if @pens
+%>
 
 
 <%= form_for (guess), html: {class: "guess_form form-inline", id: "guess_match_"+match_id.to_s, name: 'match_'+match_id.to_s} do |f| %>

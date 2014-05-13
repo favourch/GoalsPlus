@@ -28,7 +28,6 @@ class GuessesController < ApplicationController
     @pens = to_bool(params[:pens])
     @guess_id = params[:id]
 
-
   end
 
   # POST /guesses

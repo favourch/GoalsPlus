@@ -5,6 +5,6 @@ class Guess < ActiveRecord::Base
 
   validates_uniqueness_of :user_id, scope: :match_id, message: 'You already guessed this match'
   validates_presence_of :goals_b, :goals_a, message: 'You must enter the score'
-  validates :goals_b, :goals_a, numericality: {only_integer: true, :greater_than => 0}
+  validates :goals_b, :goals_a, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
 end

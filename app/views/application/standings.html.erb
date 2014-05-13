@@ -1,0 +1,123 @@
+<section class="alt extra-space top" style="background-color:rgba(0, 44, 22, 0.80);">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-12 column">
+        <div class="jumbotron">
+          <h2>Tables:</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="matchSection" class="alt extra-space">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-1 column">
+      </div>
+      <div class="col-md-10 column">
+        <div class="frontGame" style="display: box">
+          <div class="panel panel-default">
+            <div class="match_body">
+
+
+              <div class="user_guesses" style="display: box">
+                <div class="panel panel-default">
+                  <div class="panel-heading gameTitle">User Standings</div>
+                  <table class="table fullStandings">
+                    <thead>
+                    <tr>
+                      <th class="sNum">#</th>
+                      <th class="sUser">User</th>
+                      <th class="sGames"><span class="mobile">G</span><span class="desktop">Games</span></th>
+                      <th class="sWins"><span class="mobile">W</span><span class="desktop">Wins</span></th>
+                      <th class="sDraws"><span class="mobile">D</span><span class="desktop">Draws</span></th>
+                      <th class="sLosses"><span class="mobile">L</span><span class="desktop">Losses</span></th>
+                      <th class="sPoints"><span class="mobile">P</span><span class="desktop">Points</span></th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <% @standings.each do |s| %>
+                        <tr>
+                          <td class="sNum"><%= s[:id] %></td>
+                          <td class="sUser"><%= s[:user] %></td>
+                          <td class="sGames"><%= s[:games] %></td>
+                          <td class="sWins"><%= s[:wins] %></td>
+                          <td class="sDraws"><%= s[:draws] %></td>
+                          <td class="sLosses"><%= s[:losses] %></td>
+                          <td class="sPoints"><%= s[:points] %></td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+
+                    <thead>
+                    <tr>
+                      <td colspan="7">G - Games, W - Wins (3 pts), D - Draws (1 pt), L - Losses (0 pts), P - Points.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="7">Rules for classification: 1) points; 2) games; 3) number of wins; 4) Last 5
+                        guesses form.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="7"><%= link_to '« Back to Main', "/", class: 'btn' %>
+                    </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+
+
+              <div class="user_guesses" style="display: box">
+                <div class="panel panel-default">
+                  <div class="panel-heading gameTitle">User's Form</div>
+                  <table class="table fullStandings">
+                    <thead>
+                    <tr>
+                      <th class="fNum">#</th>
+                      <th class="fUser">User</th>
+                      <th class="fForm">Form (Last 5)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <% @last_form.each do |s| %>
+                        <tr>
+                          <td class="fNum"><%= s[:id] %></td>
+                          <td class="fUser"><%= s[:user] %></td>
+                          <td class="fForm">
+                            <% s[:form].each do |f| %>
+                                <div class="btn current_form_<%= f %>"><%= f %></div>
+                            <% end %>
+                          </td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+
+                    <thead>
+                    <tr>
+                      <td colspan="7">Form for the last 5 guesses</td>
+                    </tr>
+                    <tr>
+                      <td colspan="7"><%= link_to '« Back to Main', "/", class: 'btn' %>
+                    </tr>
+                    </thead>
+
+                  </table>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1 column">
+      </div>
+    </div>
+  </div>
+</section>
+

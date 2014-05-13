@@ -19,6 +19,15 @@ body {
     padding-top: 51px;
 }
 
+.mobile {
+    display: none;
+
+}
+
+.desktop {
+    display: block;
+}
+
 .mask {
     border-radius: 10px;
     box-shadow: rgb(168, 168, 168) 0px 0px 20px 10px;
@@ -452,11 +461,38 @@ section.top {
 
 .tGames, .tPoints {
     width: 75px;
+
+}
+
+.sNum, .sGames, .sWins, .sDraws, .sLosses, .sPoints, .tGames, .tPoints {
     text-align: center;
 }
 
 #new_user {
     padding-top: 30px;
+}
+
+.current_form_W, .current_form_L, .current_form_D {
+    pointer: default;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.53);
+    width: 20px !important;
+    text-align: center !important;
+    padding: 0;
+    line-height: 18px;
+    height: 20px;
+    color: white !important;
+}
+
+.current_form_W {
+    background-color: #008818;
+}
+
+.current_form_L {
+    background-color: #ff0000;
+}
+
+.current_form_D {
+    background-color: #ff9322;
 }
 
 
