@@ -34,6 +34,7 @@ Soccer::Application.routes.draw do
 
   get 'main' => 'application#main'
   get 'standings' => 'application#standings'
+  get 'rules' => 'application#rules'
 
 
   get 'guesses/new/:match_id/:pens' => 'guesses#new'

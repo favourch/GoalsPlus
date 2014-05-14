@@ -108,27 +108,56 @@ class ApplicationController < ActionController::Base
     end
 
 
-    points = User.select('settings.screen_name, GROUP_CONCAT(points ORDER BY matches.date DESC SEPARATOR " ") form')
-    .from('guesses, users, settings, matches')
-    .where("guesses.user_id = users.id AND users.setting_id = settings.id AND matches.id = guesses.match_id AND matches.date < '#{today}'")
-    .group('user_id')
+    points = User.select('u.id,
+                          u.screen_name,
+                          max(case when rn=1 then points end) m1,
+                          max(case when rn=2 then points end) m2,
+                          max(case when rn=3 then points end) m3,
+                          max(case when rn=4 then points end) m4,
+                          max(case when rn=5 then points end) m5,
+                          SUM(m.points) points')
+    .from("       (select users.id id, screen_name from users, settings where users.setting_id = settings.id) u
+                          join (
+                              select
+                                user_id,
+                                points,
+                                @rn:=IF(user_id=@prevUserId,@rn+1,1) rn,
+                                @prevUserId:=user_id,
+                                m_date
+                              from
+                                 (select m.id match_id, guesses.id as g_id, points, user_id, date m_date
+                                  from guesses, (select * from matches where date < '#{today}' order by date DESC limit 5) m
+                                  where guesses.match_id = m.id order by m.date) t
 
+
+                                join (select @prevUserId:= 0, @rn:= 0) g
+                              order by user_id, m_date desc
+                            ) m on u.id = m.user_id")
+    .group('      u.id, u.screen_name')
+    .order('      points DESC, m1 DESC, m2 DESC, m3 DESC, m4 DESC, m5 DESC')
 
     n = 0
     @last_form = Array.new
     points.each do |p|
       n += 1
 
-      form = p.form.gsub('3', 'W').gsub('1', 'D').gsub('0', 'L').split(' ').first(5)
+      form = [p.m1, p.m2, p.m3, p.m4, p.m5].join(' ').gsub('4', 'W').gsub('6', 'W').gsub('3', 'W').gsub('2', 'D').gsub('1', 'D').gsub('0', 'L').split(' ');
 
       @last_form.push({
                           id: n,
                           user: p.screen_name,
-                          form: form
+                          form: form,
+                          points: p.points
+
                       })
     end
 
   end
+
+  def rules
+
+  end
+
 
   protected
   def layout_by_resource

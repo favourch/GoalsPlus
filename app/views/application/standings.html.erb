@@ -73,13 +73,15 @@
 
               <div class="user_guesses" style="display: box">
                 <div class="panel panel-default">
-                  <div class="panel-heading gameTitle">User's Form</div>
+                  <div class="panel-heading gameTitle">User Form</div>
                   <table class="table fullStandings">
                     <thead>
                     <tr>
                       <th class="fNum">#</th>
                       <th class="fUser">User</th>
                       <th class="fForm">Form (Last 5)</th>
+                      <th class="fPoints"><span class="desktop">Points</span><span class="mobile">Pts</span></th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -93,13 +95,14 @@
                                 <div class="btn current_form_<%= f %>"><%= f %></div>
                             <% end %>
                           </td>
+                          <td class="fPoints"><%= s[:points] %></td>
                         </tr>
                     <% end %>
                     </tbody>
 
                     <thead>
                     <tr>
-                      <td colspan="7">Form for the last 5 guesses</td>
+                      <td colspan="7">Form for the last 5 matches.</td>
                     </tr>
                     <tr>
                       <td colspan="7"><%= link_to '« Back to Main', "/", class: 'btn' %>

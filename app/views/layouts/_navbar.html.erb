@@ -28,6 +28,9 @@
           <li><%= link_to('News', '/') %></li>
       <% end %>
       <% if can? :read, Match %>
+          <li><%= link_to('Rules', '/rules') %></li>
+      <% end %>
+      <% if can? :read, Match %>
           <li><%= link_to('About', '/') %></li>
       <% end %>
       <% if can? :create, Match %>
